@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="263.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Label text=" &lt; 컨텐츠 설정 메뉴 &gt;" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </top>
+   <center>
+      <VBox fx:id="contentsList" alignment="CENTER" prefHeight="327.0" prefWidth="350.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="50.0" right="50.0" />
+         </BorderPane.margin></VBox>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="45.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnApply" mnemonicParsing="false" text="적용하기" />
+            <Button fx:id="btnAddlist" mnemonicParsing="false" text="목록추가" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

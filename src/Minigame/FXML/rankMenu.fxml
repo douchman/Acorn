@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="292.0" prefWidth="271.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox alignment="CENTER" prefHeight="375.0" prefWidth="308.0" spacing="40.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnGrade" mnemonicParsing="false" prefHeight="39.0" prefWidth="110.0" text="평점 순">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnGo" mnemonicParsing="false" prefWidth="110.0" text="가자! 순">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnReview" mnemonicParsing="false" prefWidth="110.0" text="리뷰 순">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <Label text="&lt; 랭크  선택 &gt;" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </top>
+   <bottom>
+      <Button fx:id="btnApply" mnemonicParsing="false" prefHeight="23.0" prefWidth="90.0" text="적용하기" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="10.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+</BorderPane>

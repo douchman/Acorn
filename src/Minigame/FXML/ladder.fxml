@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600" prefWidth="850.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="700.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="TOP" prefHeight="30.0" prefWidth="700.0" text="&lt; 사다리 타기 &gt;">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <BorderPane prefHeight="570.0" prefWidth="700.0">
+               <top>
+                  <HBox fx:id="startField" prefHeight="35.0" prefWidth="700.0" spacing="40.0" BorderPane.alignment="CENTER" />
+               </top>
+               <bottom>
+                  <HBox fx:id="endField" prefHeight="35.0" prefWidth="700.0" spacing="40.0" BorderPane.alignment="CENTER" />
+               </bottom>
+               <center>
+                  <AnchorPane fx:id="ladderField" prefHeight="500.0" prefWidth="700.0" BorderPane.alignment="CENTER" />
+               </center>
+            </BorderPane>
+         </children>
+      </VBox>
+      <VBox prefHeight="600" prefWidth="150.0" spacing="10.0">
+         <children>
+            <Button fx:id="btnAddslot" mnemonicParsing="false" prefHeight="41.0" prefWidth="99.0" text="+슬롯추가" />
+            <Button fx:id="btnClear" mnemonicParsing="false" prefHeight="41.0" prefWidth="99.0" text="모두 지우기" />
+         </children>
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </VBox>
+   </children>
+</HBox>
