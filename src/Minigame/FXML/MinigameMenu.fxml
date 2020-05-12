@@ -35,7 +35,7 @@
                   <Insets right="65.0" />
                </padding>
             </Button>
-            <Button fx:id="btnAcorn" mnemonicParsing="false" prefHeight="70.0" prefWidth="210.0" text="도토리부수기">
+            <Button fx:id="btnAcorn" onAction="#BrkAcronBtnPressed" mnemonicParsing="false" prefHeight="70.0" prefWidth="210.0" text="도토리부수기">
                <graphic>
                   <ImageView fitHeight="65.0" fitWidth="70.0">
                      <image>

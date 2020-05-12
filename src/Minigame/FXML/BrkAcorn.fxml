@@ -17,7 +17,7 @@
       </Label>
    </top>
    <bottom>
-      <Button fx:id="btnRetry" alignment="CENTER" disable="true" mnemonicParsing="false" prefHeight="62.0" prefWidth="105.0" text="재도전" BorderPane.alignment="CENTER">
+      <Button fx:id="btnRetry" alignment="CENTER" mnemonicParsing="false" prefHeight="62.0" prefWidth="105.0" text="재도전" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="15.0" />
          </BorderPane.margin>
@@ -26,12 +26,13 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fx:id="ImgAcorn" fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="31.0" prefHeight="35.0" prefWidth="181.0" text="Time">
+            <Label fx:id="time" alignment="CENTER" contentDisplay="CENTER" layoutX="210.0" layoutY="14.0" prefHeight="35.0" prefWidth="181.0" text="Time">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
+            <Button fx:id="btnStart" layoutX="244.0" layoutY="129.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="113.0" text="Start" />
+            <Button fx:id="btnAcorn" layoutX="192.0" layoutY="63.0" mnemonicParsing="false" prefHeight="195.0" prefWidth="212.0" />
          </children>
       </Pane>
    </center>
