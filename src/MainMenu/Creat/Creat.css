@@ -1,0 +1,12 @@
+BorderPane {
+	-fx-background-color: white;
+}
+
+#creatimg{
+			-fx-image: url("../Login/Data/acorn.png");
+}
+
+Label{
+		-fx-font-family: "³ª´®°íµñ";
+	-fx-font-weight: bold;
+}

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:controller="MainMenu.Login.LoginController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="359.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox prefHeight="218.0" prefWidth="325.0" spacing="10.0" style="-fx-border-color: lightgrey;" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="signinLbl" text="LOGIN">
+               <font>
+                  <Font name="SansSerif Regular" size="26.0" />
+               </font>
+            </Label>
+            <TextField fx:id="emailTxtF" prefHeight="31.0" prefWidth="600.0" promptText="Email (ID)">
+               <font>
+                  <Font name="NanumGothic" size="12.0" />
+               </font></TextField>
+            <TextField fx:id="emailTxtF1" prefHeight="31.0" prefWidth="600.0" promptText="PW">
+               <font>
+                  <Font name="NanumGothic" size="12.0" />
+               </font>
+            </TextField>
+            <Button fx:id="continueBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="345.0" text="로그인">
+               <font>
+                  <Font name="SansSerif Bold" size="12.0" />
+               </font></Button>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </center>
+   <bottom>
+      <VBox prefHeight="86.0" prefWidth="325.0" spacing="5.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="creatBtn" mnemonicParsing="false" prefHeight="23.0" prefWidth="345.0" text="비밀번호 찾기">
+               <font>
+                  <Font name="NanumGothicBold" size="12.0" />
+               </font></Button>
+            <Button onAction="#CreatAccount" fx:id="creatBtn1" mnemonicParsing="false" prefHeight="23.0" prefWidth="345.0" text="회원가입">
+               <font>
+                  <Font name="NanumGothicBold" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="creatBtn2" mnemonicParsing="false" prefHeight="23.0" prefWidth="345.0" text="관리자 로그인">
+               <font>
+                  <Font name="NanumGothicBold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="15.0" />
+         </padding>
+      </VBox>
+   </bottom>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+   <top>
+      <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="325.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="loginimg" fitHeight="50.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../이근희_자바취업반/도토리밥/acorn.png" />
+               </image></ImageView>
+            <Label text="도토리밥">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+   </top>
+</BorderPane>

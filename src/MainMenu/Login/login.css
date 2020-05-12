@@ -1,0 +1,16 @@
+BorderPane {
+	-fx-background-color: white;
+}
+
+#loginimg{
+		-fx-image: url("Data/acorn.png");
+}
+
+Label{
+		-fx-font-family: "³ª´®°íµñ";
+	-fx-font-weight: bold;
+}
+
+Button{
+	-fx-font-family: "³ª´®°íµñ";
+}
