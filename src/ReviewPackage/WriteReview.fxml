@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #7FC9B7;" 
+	xmlns="http://javafx.com/javafx/8" 
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="ReviewPackage.WriteReviewController">
+   <children>
+      <Label fx:id="WriteTitleLbl" prefHeight="50.0" prefWidth="170.0" text="리뷰 쓰기" textFill="WHITE">
+         <font>
+            <Font name="나눔바른고딕" size="36.0" />
+         </font>
+      </Label>
+      <HBox prefHeight="25.0" prefWidth="200.0">
+         <children>
+            <Label prefHeight="25.0" style="-fx-background-color: #ffffff;" text=" 작성자 : " textFill="#7fc9b7">
+               <font>
+                  <Font name="나눔바른고딕" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="WriterNameLbl" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #ffffff;" text="닉네임" textFill="#7fc9b7">
+               <font>
+                  <Font name="나눔바른고딕" size="16.0" />
+               </font>
+            </Label>
+            <FlowPane prefHeight="24.0" prefWidth="121.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <ToggleButton fx:id="WriteStarBtn1" onAction="#star1" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+                     <effect>
+                        <ImageInput>
+                           <source>
+                              <Image url="/image/white_star1.png" />
+                           </source>
+                        </ImageInput>
+                     </effect>
+                     <padding>
+                        <Insets right="4.0" />
+                     </padding>
+                  </ToggleButton>
+                  <ToggleButton fx:id="WriteStarBtn2" onAction="#star2" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+                     <effect>
+                        <ImageInput>
+                           <source>
+                              <Image url="/image/white_star1.png" />
+                           </source>
+                        </ImageInput>
+                     </effect>
+                     <padding>
+                        <Insets right="4.0" />
+                     </padding>
+                  </ToggleButton>
+                  <ToggleButton fx:id="WriteStarBtn3" onAction="#star3" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+                     <effect>
+                        <ImageInput>
+                           <source>
+                              <Image url="/image/white_star1.png" />
+                           </source>
+                        </ImageInput>
+                     </effect>
+                     <padding>
+                        <Insets right="4.0" />
+                     </padding>
+                  </ToggleButton>
+                  <ToggleButton fx:id="WriteStarBtn4" onAction="#star4" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+                     <effect>
+                        <ImageInput>
+                           <source>
+                              <Image url="/image/white_star1.png" />
+                           </source>
+                        </ImageInput>
+                     </effect>
+                     <padding>
+                        <Insets right="4.0" />
+                     </padding>
+                  </ToggleButton>
+                  <ToggleButton fx:id="WriteStarBtn5" onAction="#star5" alignment="BOTTOM_LEFT" mnemonicParsing="false" prefHeight="24.0" prefWidth="24.0">
+                     <effect>
+                        <ImageInput>
+                           <source>
+                              <Image url="/image/white_star1.png" />
+                           </source>
+                        </ImageInput>
+                     </effect>
+                     <padding>
+                        <Insets right="4.0" />
+                     </padding>
+                  </ToggleButton>
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </FlowPane>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </HBox>
+      <TextArea fx:id="WriteContentsTA" prefHeight="200.0" prefWidth="200.0" promptText="작성내용(100자 이내)">
+         <font>
+            <Font name="나눔바른고딕" size="16.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </TextArea>
+      <HBox fillHeight="false" prefHeight="25.0" prefWidth="520.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <Label fx:id="WriteReviewImgURLLbl" prefHeight="25.0" prefWidth="400.0" text="사진없음">
+               <font>
+                  <Font name="나눔바른고딕" size="14.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </Label>
+            <Button fx:id="WriteReviewImgUpload" onAction="#ImgUploadBtnProc" mnemonicParsing="false" prefHeight="15.0" text="업로드">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </HBox>
+      <FlowPane alignment="TOP_RIGHT" hgap="10.0" prefHeight="30.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="WriteSubmitBtn" onAction="#submitBtnProc" mnemonicParsing="false" prefHeight="28.0" prefWidth="77.0" text="Button">
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="/image/submitbtn.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
+            </Button>
+            <Button fx:id="WriteCancelBtn" onAction="#CancelBtnProc" mnemonicParsing="false" prefHeight="28.0" prefWidth="77.0" text="Button">
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="/image/cancelbtn.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
+            </Button>
+         </children>
+      </FlowPane>
+   </children>
+   <padding>
+      <Insets bottom="15.0" left="40.0" right="40.0" top="15.0" />
+   </padding>
+</VBox>

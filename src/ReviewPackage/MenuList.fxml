@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefWidth="400.0" style="-fx-background-color: #7FC9B7;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox>
+         <children>
+            <Label fx:id="TabMenuName" alignment="TOP_LEFT" prefWidth="175.0" text="메뉴명" textFill="WHITE">
+               <font>
+                  <Font name="나눔바른고딕" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="TabMenuLine" alignment="TOP_RIGHT" prefWidth="150.0" text="----------" textFill="WHITE">
+               <font>
+                  <Font name="나눔바른고딕" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="TabMenuPrice" alignment="TOP_LEFT" prefWidth="75.0" text="1000" textFill="WHITE">
+               <font>
+                  <Font name="나눔바른고딕" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Label fx:id="TabManuExplain" prefWidth="300.0" text="간단설명" textFill="WHITE">
+         <font>
+            <Font name="나눔바른고딕" size="12.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </Label>
+   </children>
+</VBox>
