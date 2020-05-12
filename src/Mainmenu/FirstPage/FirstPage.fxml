@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Mainmenu.FirstPage.FirstPageController">
+   <top>
+      <HBox alignment="CENTER" prefHeight="189.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView id="logo-img" fitHeight="70.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+            </ImageView>
+            <Label id="logo-txt" alignment="CENTER" prefHeight="70.0" prefWidth="190.0" text="도토리밥">
+            </Label>
+         </children>
+         <padding>
+            <Insets left="10.0" right="10.0" top="100.0" />
+         </padding>
+      </HBox>
+   </top>
+   <center>
+      <VBox alignment="CENTER" prefHeight="128.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button onAction="#gotoMain" fx:id="GotoMainBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" text="오늘 뭐 먹지? 도토리밥!" />
+            <Button fx:id="LoginBtn" mnemonicParsing="false" text="로그인" />
+         </children>
+         <padding>
+            <Insets bottom="100.0" />
+         </padding>
+      </VBox>
+   </center>
+   <bottom>
+      <Label text="제작 : 박상현, 백광현, 안태건, 이근희, 이세근" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
+      </Label>
+   </bottom>
+</BorderPane>

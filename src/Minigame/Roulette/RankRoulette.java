@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 public class RankRoulette extends Roulette{
 	
 	final static String DRIVER = "org.sqlite.JDBC";
-	final static String DB  = "jdbc:sqlite:C:/JAVA/DB/parkDB.db";
+	final static String DB  = "jdbc:sqlite:C:/AcornDB/parkDB.db";
 	String sql = "SELECT * "+
 				 "FROM restaurant "
 			     ;

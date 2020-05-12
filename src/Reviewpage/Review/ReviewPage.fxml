@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="MainBorderPane" prefHeight="600.0" prefWidth="800.0" 
+	xmlns="http://javafx.com/javafx/8" 
+	xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="Reviewpage.Review.ReviewPageController">
+   <center>
+      <VBox fx:id="MainVBox" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox fx:id="TopHBox" prefHeight="150.0" prefWidth="725.0">
+               <children>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #7FC9B7;">
+                     <children>
+                        <StackPane alignment="TOP_LEFT" prefHeight="150.0" prefWidth="200.0" style="-fx-border-color: #ffffff; -fx-border-width: 2;">
+                           <children>
+                              <ImageView fx:id="ImgViewer" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="Reviewpage/image/그림1.png" />
+                                 </image>
+                              </ImageView>
+                              <HBox prefHeight="150.0" prefWidth="200.0" spacing="140.0">
+                                 <children>
+                                    <Button fx:id="LeftBtn" onAction="#ImgLeftpage" mnemonicParsing="false" opacity="0.5" prefHeight="109.0" prefWidth="34.0" text="Button">
+                                       <effect>
+                                          <ImageInput>
+                                             <source>
+                                                <Image url="Reviewpage/image/leftBtn.png" />
+                                             </source>
+                                          </ImageInput>
+                                       </effect>
+                                       <HBox.margin>
+                                          <Insets top="20.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button fx:id="RightBtn" onAction="#ImgRightpage" mnemonicParsing="false" opacity="0.5" prefHeight="109.0" prefWidth="34.0" text="Button">
+                                       <effect>
+                                          <ImageInput>
+                                             <source>
+                                                <Image url="Reviewpage/image/rightBtn.png" />
+                                             </source>
+                                          </ImageInput>
+                                       </effect>
+                                       <HBox.margin>
+                                          <Insets top="20.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                                 <StackPane.margin>
+                                    <Insets />
+                                 </StackPane.margin>
+                              </HBox>
+                           </children>
+                           <StackPane.margin>
+                              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                           </StackPane.margin>
+                        </StackPane>
+                     </children>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </StackPane>
+                  <HBox prefHeight="100.0" prefWidth="530.0" style="-fx-background-color: #7FC9B7;">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="450.0">
+                           <children>
+                              <Label fx:id="TitleLbl" text="상호명" textFill="WHITE">
+                                 <font>
+                                    <Font name="나눔바른고딕" size="18.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets bottom="5.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="TagLbl" text="#태그" textFill="WHITE">
+                                 <padding>
+                                    <Insets bottom="5.0" />
+                                 </padding>
+                                 <font>
+                                    <Font name="나눔바른고딕" size="12.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="15.0" prefWidth="295.0">
+                                 <children>
+                                    <Label fx:id="TitleStarLbl" text="[☆☆☆☆☆]" textFill="WHITE">
+                                       <font>
+                                          <Font name="나눔바른고딕" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="TitleStarNumLbl" prefHeight="15.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="나눔바른고딕" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" />
+                                 </padding>
+                              </HBox>
+                              <Label fx:id="TitleAddressLbl" alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="445.0" text="주소" textFill="WHITE" textOverrun="CLIP">
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="나눔바른고딕" size="12.0" />
+                                 </font></Label>
+                              <Label fx:id="TitleAddressLbl2" alignment="CENTER_RIGHT" prefHeight="20.0" prefWidth="445.0" text="싱세주소" textFill="WHITE" textOverrun="CLIP">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="나눔바른고딕" size="12.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="15.0" prefWidth="200.0">
+                                 <children>
+                                    <Label prefWidth="35.0" text="분류 :" textFill="WHITE">
+                                       <font>
+                                          <Font name="나눔바른고딕" size="12.0" />
+                                       </font></Label>
+                                    <Label fx:id="TitleKindfoodLbl" prefWidth="315.0" text="음식종류" textFill="WHITE">
+                                       <font>
+                                          <Font name="나눔바른고딕" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefWidth="50.0" text="조회수 :" textFill="WHITE">
+                                       <font>
+                                          <Font name="나눔바른고딕" size="12.0" />
+                                       </font></Label>
+                                    <Label fx:id="TitleViewLbl" alignment="CENTER_RIGHT" prefWidth="45.0" text="0" textFill="WHITE" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="100.0" prefWidth="50.0">
+                           <children>
+                              <ToggleButton fx:id="TitleBookmarkBtn" onAction="#BookmarkProc" alignment="CENTER_RIGHT" mnemonicParsing="false" prefHeight="36.0" prefWidth="33.0">
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
+                                 <effect>
+                                    <ImageInput>
+                                       <source>
+                                          <Image url="Reviewpage/image/bookmark.PNG" />
+                                       </source>
+                                    </ImageInput>
+                                 </effect></ToggleButton>
+                              <Button fx:id="TitleLinkBtn" onAction="#LinkProc" mnemonicParsing="false" prefHeight="36.0" prefWidth="33.0">
+                                 <effect>
+                                    <ImageInput>
+                                       <source>
+                                          <Image url="Reviewpage/image/link.png" />
+                                       </source>
+                                    </ImageInput>
+                                 </effect></Button>
+                           </children>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <TabPane prefHeight="400.0" prefWidth="200.0" style="-fx-background-color: #7FC9B7; -fx-tab-min-width: 165; -fx-tab-min-height: 30;" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab fx:id="Tab_Menu" style="-fx-background-color: #5FAE95;" text="메뉴" onSelectionChanged="#TabMenu">
+                     <content>
+                        <Pane fx:id="TabMenuPane" prefHeight="347.0" prefWidth="760.0">
+                           <children>
+                              <ScrollPane fx:id="TabManuScrollPane" hbarPolicy="NEVER" layoutX="40.0" layoutY="15.0" prefHeight="320.0" prefWidth="680.0" style="-fx-background-color: #7FC9B7; -fx-border-color: #ffffff; -fx-border-width: 2;">
+                                 <content>
+                                    <Pane fx:id="TabMenuChildPane" prefWidth="674.0" style="-fx-background-color: #7FC9B7;">
+                                       <rotationAxis>
+                                          <Point3D />
+                                       </rotationAxis>
+                                       <children>
+                                          <Label fx:id="TabMenuTitleLbl" alignment="TOP_LEFT" layoutX="15.0" layoutY="15.0" lineSpacing="5.0" prefHeight="75.0" prefWidth="300.0" text="음식점 소개" textFill="WHITE">
+                                             <font>
+                                                <Font name="나눔바른고딕" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="14.0" layoutY="90.0" text="------메뉴------" textFill="WHITE">
+                                             <font>
+                                                <Font name="나눔바른고딕" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <VBox fx:id="TabMenuListVBox" layoutX="13.0" layoutY="111.0" prefHeight="200.0" prefWidth="643.0" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </opaqueInsets>
+                                    </Pane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                           <opaqueInsets>
+                              <Insets left="10.0" />
+                           </opaqueInsets>
+                        </Pane>
+                     </content></Tab>
+                <Tab fx:id="Tab_Review" style="-fx-background-color: #5FAE95;" text="리뷰" onSelectionChanged="#TabReview">
+                     <content>
+                        <Pane fx:id="TabReviewPane" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ScrollPane fx:id="TabReviewScrollPane" hbarPolicy="NEVER" layoutX="40.0" layoutY="15.0" prefHeight="320.0" prefWidth="680.0" style="-fx-background-color: #7FC9B7; -fx-border-color: #ffffff; -fx-border-width: 2;">
+                                 <content>
+                                    <Pane fx:id="TabReviewChildPane" layoutX="40.0" layoutY="15.0" prefWidth="674.0" style="-fx-background-color: #7FC9B7;">
+                                       <children>
+                                          <Button fx:id="TabReviewWriteBtn" layoutX="25.0" layoutY="15.0" mnemonicParsing="false" onAction="#WriteReviewProc" prefHeight="25.0" prefWidth="252.0" text="Button">
+                                             <effect>
+                                                <ImageInput>
+                                                   <source>
+                                                      <Image url="Reviewpage/image/writebtn.png" />
+                                                   </source>
+                                                </ImageInput>
+                                             </effect>
+                                          </Button>
+                                          <VBox fx:id="TabReviewListVBox"  layoutX="25.0" layoutY="40.0" prefHeight="200.0" prefWidth="525.0">
+                                          	<padding>
+                                                <Insets bottom="10.0" top="10.0" />
+                                             </padding>
+                                          </VBox>
+                                       </children>
+                                    </Pane>
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </Pane>
+                     </content></Tab>
+                  <Tab fx:id="Tab_Notice" style="-fx-background-color: #5FAE95;" text="공지사항" onSelectionChanged="#TabNotice">
+                     <content>
+                        <Pane fx:id="TabNoticePane" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Pane fx:id="TabNoticeChildPane" layoutX="40.0" layoutY="15.0" prefHeight="314.0" prefWidth="674.0" style="-fx-background-color: #7FC9B7; -fx-border-color: #ffffff; -fx-border-width: 2;">
+                                 <children>
+                                    <Label fx:id="TabNoticeLbl1" alignment="TOP_LEFT" layoutX="27.0" layoutY="25.0" prefHeight="100.0" prefWidth="350.0" style="-fx-border-color: #ffffff;" text="Label" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="TabNoticeLbl2" alignment="TOP_LEFT" layoutX="27.0" layoutY="157.0" prefHeight="125.0" prefWidth="350.0" style="-fx-border-color: #ffffff;" text="Label" textFill="WHITE">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </Pane>
+                     </content></Tab>
+                  <Tab fx:id="Tab_Info" style="-fx-background-color: #5FAE95;" text="찾아가기" onSelectionChanged="#TabInfo">
+                     <content>
+                        <Pane fx:id="TabInfoPane" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="TabInfoMapViewer" fitHeight="300.0" fitWidth="400.0" layoutX="43.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="Reviewpage/image/mapex.PNG" />
+                                 </image>
+                              </ImageView>
+                              <VBox fx:id="TabInfoVBox" layoutX="498.0" layoutY="26.0" prefHeight="200.0" prefWidth="229.0" style="-fx-border-color: #ffffff;">
+                                 <children>
+                                    <Label fx:id="TabInfoAddressLbl" alignment="TOP_LEFT" prefHeight="50.0" prefWidth="200.0" text="Label" textFill="WHITE">
+                                       <font>
+                                          <Font name="나눔바른고딕" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="TabInfoPhoneLbl" alignment="TOP_LEFT" prefHeight="50.0" prefWidth="200.0" text="Label" textFill="WHITE">
+                                       <font>
+                                          <Font name="나눔바른고딕" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="TabInfoBussinessLbl" alignment="TOP_LEFT" prefHeight="50.0" prefWidth="200.0" text="Label" textFill="WHITE">
+                                       <font>
+                                          <Font name="나눔바른고딕" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                           </children>
+                        </Pane>
+                     </content></Tab>
+              </tabs>
+            </TabPane>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+      </VBox>
+   </center>
+</BorderPane>

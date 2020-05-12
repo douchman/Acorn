@@ -1,56 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
-prefHeight="400.0" prefWidth="379.0" 
-xmlns="http://javafx.com/javafx/8" 
-xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="Minigame.MiniGameController"
->
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="379.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Minigame.MiniGameController">
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnRoulette" onAction="#RouletteBtnPressed" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="Button">
+            <Button fx:id="btnRoulette" mnemonicParsing="false" onAction="#RouletteBtnPressed" prefHeight="70.0" prefWidth="210.0" text="돌림판">
                <graphic>
                   <ImageView fitHeight="65.0" fitWidth="70.0">
                      <image>
-                        <Image url="image/roulette.jpg" />
+                        <Image url="Minigame/image/roulette.jpg" />
                      </image>
                   </ImageView>
                </graphic>
+               <padding>
+                  <Insets right="65.0" />
+               </padding>
             </Button>
-            <Button fx:id="btnLadder" onAction="#LadderBtnPressed" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="Button">
+            <Button fx:id="btnLadder" mnemonicParsing="false" onAction="#LadderBtnPressed" prefHeight="70.0" prefWidth="210.0" text="사다리">
                <graphic>
                   <ImageView fitHeight="65.0" fitWidth="70.0">
                      <image>
-                        <Image url="image/ladder.png" />
+                        <Image url="Minigame/image/ladder.png" />
                      </image>
                   </ImageView>
                </graphic>
+               <padding>
+                  <Insets right="65.0" />
+               </padding>
             </Button>
-            <Button fx:id="btnAcorn" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="Button">
+            <Button fx:id="btnAcorn" mnemonicParsing="false" prefHeight="70.0" prefWidth="210.0" text="도토리부수기">
                <graphic>
                   <ImageView fitHeight="65.0" fitWidth="70.0">
                      <image>
-                        <Image url="image/acorn.png" />
+                        <Image url="Minigame/image/acorn.png" />
                      </image>
                   </ImageView>
                </graphic>
+               <padding>
+                  <Insets right="28.0" />
+               </padding>
             </Button>
-            <Button fx:id="btnSlot" mnemonicParsing="false" prefHeight="70.0" prefWidth="150.0" text="Button">
+            <Button fx:id="btnSlot" mnemonicParsing="false" prefHeight="70.0" prefWidth="210.0" text="도토리머신">
                <graphic>
                   <ImageView fitHeight="65.0" fitWidth="70.0">
                      <image>
-                        <Image url="image/slot.png" />
+                        <Image url="Minigame/image/slot.png" />
                      </image>
                   </ImageView>
                </graphic>
+               <padding>
+                  <Insets right="40.0" />
+               </padding>
             </Button>
          </children>
       </VBox>

@@ -37,4 +37,9 @@ public class MiniGameController implements Initializable{
 		gameServcie.runLadder(root);
 		
 	}
+	public void BrkAcronBtnPressed(ActionEvent event) {
+		Stage stage = (Stage)root.getScene().getWindow();
+		stage.close();
+		gameServcie.runBrkAcorn(root);
+	}
 }

@@ -64,7 +64,7 @@ public class CustomRulette extends Roulette{
 		initList();
 		btnAddlist.setOnAction(e->{
 			if(fieldCnt <10) {
-				listTxtfield.add(compo.getTxtField());
+				listTxtfield.add(compo.getRouletteTxtField());
 				contentsList.getChildren().add(listTxtfield.get(fieldCnt));
 				fieldCnt++;
 			}

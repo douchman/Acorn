@@ -3,6 +3,7 @@ package Minigame.Service;
 import java.io.IOException;
 
 import Minigame.MiniGameController;
+import Minigame.BrkAcorn.BrkAcorn;
 import Minigame.Ladder.Ladder;
 import Minigame.Roulette.RouletteMenu;
 import Minigame.ServiceImpl.MinigameServiceImpl;
@@ -43,6 +44,13 @@ public class MinigameService implements MinigameServiceImpl{
 	public void runLadder(Parent root) {
 		Ladder ladder = new Ladder();
 		ladder.startLadder();
+		
+	}
+	
+	@Override
+	public void runBrkAcorn(Parent root) {
+		BrkAcorn brkAcorn = new BrkAcorn();
+		brkAcorn.runBrkAcorn();
 		
 	}
 }
