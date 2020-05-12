@@ -1,0 +1,40 @@
+BorderPane{
+	-fx-background-color: white;
+}
+
+Label{
+	-fx-font-family: "³ª´®°íµñ";
+}
+
+Button{
+		-fx-background-color: mediumaquamarine;
+	 -fx-font-family: "³ª´®°íµñ";
+		-fx-font-weight: bold;
+}
+
+TextField{
+	-fx-font-family: "³ª´®°íµñ";
+}
+
+Text{
+	-fx-font-family: "³ª´®°íµñ";
+	-fx-font-weight: bold;
+}
+
+
+ScrollPane{
+	-fx-background-color: white;
+}
+
+
+#mapImg{
+	-fx-image: url("Data/map.png");
+}
+
+#logo-img{
+	-fx-image: url("Data/acorn.png");
+}
+
+#CRestList1Img {
+	-fx-image: url("Data/acorn.png");
+}
