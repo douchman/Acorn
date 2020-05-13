@@ -10,12 +10,16 @@ import java.util.TreeMap;
 
 public class MyDBServiceImpl implements MyDBService {
 	final String DRIVER = "org.sqlite.JDBC";
-	final String DB = "jdbc:sqlite:C:/AcornDB/Shop.db";
+	//final String DB = "jdbc:sqlite:src/Shop.db";
+	//final String DB = "jdbc:sqlite:C:/자바취업반_이세근/Project/Shop.db";
+	final String DB = "jdbc:sqlite:C:/자바취업반_이세근/Project/restaurant.db";
+	int idx;
 	
-	//해당 필드를 찾아서 String으로 반환(단, 하나의 값만)
+	//해당 필드를 찾아서 Map에 String값으로 반환(단, 하나 사용시 selectDB().get(0)으로 사용)
+	@Override
 	public Map<Integer, String> selectDB(String SQL, String fieldname) {
 		 Map<Integer, String> mapstr = new TreeMap<Integer, String>();
-		 int idx = 0;
+		 idx = 0;
 			try {
 			Class.forName(DRIVER);
 			Connection conn = DriverManager.getConnection(DB);
@@ -37,51 +41,62 @@ public class MyDBServiceImpl implements MyDBService {
 	}
 
 	//select를 위한 SQL문
-	
+	@Override
 	public String InformationSQL(String shopId) {
-		return  "select imgURL, shop.shop_name, avg(grade), shop_address1, shop_address2, \r\n"
-				+ " shop_kind, shop_view\r\n" +
-				"from shopTable as shop, reviewTable as rev\r\n" +
-				"where shop.shop_id = rev.shop_id and shop.shop_id = "
-				+ shopId +"\r\n" + "group by shop.shop_name;";
+		return  "select image, res.name, avg(grade), address1, address2, category, view\n" + 
+				"from restaurant as res, reviewTable as rev, location as lo, menu as me, restaurant_rev as resrv\n" + 
+				"where res.name_id = rev.shop_id and res.name_id = lo.name_id and res.category_id = me.category_id and res.name_id = resrv.name_id\n" + 
+				"and res.name_id = " + shopId + "\n" + 
+				"group by res.name;";
 	}
+	@Override
 	public String MenuSQL(String shopId) {
-		return	"select shop_name, menu, price\r\n" + 
-				"from shopTable as shop, menuTable as me\r\n" + 
-				"where shop.shop_id = me.shop_id\r\n" + 
-				"and shop.shop_id = " + shopId + "\r\n" + 
-				"group by menu\r\n" +
+		return	"select name, shop_menu, me.price\n" + 
+				"from restaurant as res, menuTable as me\n" + 
+				"where res.name_id = me.name_id\n" + 
+				"and res.name_id = " + shopId + "\n" + 
+				"group by shop_menu\n" + 
 				"order by menu_id;";
 	}
+	@Override
 	public String ReviewSQL(String shopId) {
-		return "select us.user_id, review_id, user_name, grade, writeday, imgURL, review\r\n" + 
-				"from userTable as us, reviewTable as rev\r\n" + 
-				"where us.user_id = rev.user_id\r\n" + 
+		return "select email, review_id, mem.name, grade, writeday, imgURL, review\n" + 
+				"from member as mem, reviewTable as rev\n" + 
+				"where mem.email = rev.user_email\n" + 
 				"and shop_id = " + shopId + ";";
 	}
+	@Override
 	public String BookmarkSQL(String userId) {
-		return "select user_id, shop_id\r\n" + 
-				"from bookmarkTable\r\n" + 
-				"where user_id = " + userId + ";";
+		return "select email, name_id\n" + 
+				"from bookmarkTable\n" + 
+				"where email = '" + userId + "';";
 	}
 	@Override
 	public String WriteSQL(String userId) {
-		return "select user_name, review\r\n" + 
-				"from userTable as us, reviewTable as rev\r\n" + 
-				"where us.user_id = rev.user_id\r\n" + 
-				"and rev.user_id = " + userId + ";";
+		return "select email, name, substr(email, 1, instr(email,'@')-1), grade, review, writeday\n" + 
+				"from member as mem, reviewTable as rev\n" + 
+				"where mem.email = rev.user_email\n" + 
+				"and email = '" + userId + "';";
+	}
+	@Override
+	public String EditSQL(String reviewId) {
+		return "select review_id, email, name, substr(email, 1, instr(email,'@')-1), grade review, writeday\n" + 
+				"from member as mem, reviewTable as rev\n" + 
+				"where mem.email = rev.user_email\n" + 
+				"and review_id = " + reviewId + ";";
 	}
 	@Override
 	public String EmailSQL(String shopId) {
-		return "select us.user_id,substr(user_email, 1, instr(user_email,'@')-1)\r\n" + 
-				"from userTable as us, reviewTable as rev\r\n" + 
-				"where us.user_id = rev.user_id\r\n" + 
+		return "select email, substr(email, 1, instr(email,'@')-1)\n" + 
+				"from member as mem, reviewTable as rev\n" + 
+				"where mem.email = rev.user_email\n" + 
 				"and shop_id = " + shopId + ";";
 	}
 	
-	//조회수 오르면 저장
+	//식당)조회수 오르면 저장
+	@Override
 	public void insertView(String shopId) {
-		String selectSQL = "select shop_view from shopTable where shop_id = " + shopId + ";";
+		String selectSQL = "select view from restaurant_rev where name_id = " + shopId + ";";
 		int view = 0;
 		try {
 			Class.forName(DRIVER);
@@ -89,9 +104,9 @@ public class MyDBServiceImpl implements MyDBService {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(selectSQL);
 			while(rs.next())
-				view = rs.getInt("shop_view")+1;
+				view = rs.getInt("view")+1;
 			
-			String updateSQL = "update shopTable set shop_view = " + view + " where shop_id = " + shopId + ";";
+			String updateSQL = "update restaurant_rev set view = " + view + " where name_id = " + shopId + ";";
 			stmt.executeUpdate(updateSQL);
 			rs.close();
 			stmt.close();
@@ -101,33 +116,8 @@ public class MyDBServiceImpl implements MyDBService {
 			e.printStackTrace();
 		}
 	}
-	public boolean isBookmark(String shopId) {
-		//북마크테이블에 해당조건에 레코드가 있는지 확인
-		String selectSQL = "select shop_name as '식당명', user_name as '사용자명'\r\n" + 
-				"from shopTable as shop, userTable as user, bookmarkTable as book\r\n" + 
-				"where shop.shop_id = book.shop_id and user.user_id = book.user_id\r\n" + 
-				"and book.shop_id = " + shopId + ";";
-		try {
-			Class.forName(DRIVER);
-			Connection conn = DriverManager.getConnection(DB);
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(selectSQL);
-			if(rs.next()) {
-				rs.close();
-				stmt.close();
-				conn.close();
-				return false;
-			}
-			rs.close();
-			stmt.close();
-			conn.close();
-		}catch (SQLException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return true;
-	}
-	//찜하면 저장
+	//식당)찜하면 저장
+	@Override
 	public void insertBookmark(String shopId, String userId) {	//isBookmark()실행 후 사용
 		String selectSQL = "select idx from bookmarkTable;";
 		try {
@@ -135,11 +125,11 @@ public class MyDBServiceImpl implements MyDBService {
 			Connection conn = DriverManager.getConnection(DB);
 			Statement stmt = conn.createStatement();
 			//북마크테이블의 idx값 찾기
-			int idx = 0;
+			idx = 0;
 			ResultSet rs = stmt.executeQuery(selectSQL);
 			while(rs.next())	//마지막 idx값
 				idx = rs.getInt("idx")+1;	//최신 idx값
-			String insertSQL = "insert into bookmarkTable values("+idx+","+ shopId +"," + userId +");";
+			String insertSQL = "insert into bookmarkTable values("+idx+","+ shopId +",'" + userId +"');";
 			stmt.executeUpdate(insertSQL);
 			
 			rs.close();
@@ -150,16 +140,19 @@ public class MyDBServiceImpl implements MyDBService {
 			e.printStackTrace();
 		}
 	}
-	//찜 해제시 테이블에서 삭제
-	public void deleteBookmark(String shopId, String userId) {	//isBookmark()실행 후 사용
-
+	//식당)찜 해제시 테이블에서 삭제
+	@Override
+	public void deleteBookmark(String userId) {	//isBookmark()실행 후 사용
+		String selectSQL = "select idx from bookmarkTable where email = '" + userId + "';";
 		try {
 			Class.forName(DRIVER);
 			Connection conn = DriverManager.getConnection(DB);
 			Statement stmt = conn.createStatement();
-			//북마크테이블의 idx값 찾기
-
-			String deleteSQL = "delete from bookmarkTable where shop_id = " + shopId + ";";
+			idx = 0;
+			ResultSet rs = stmt.executeQuery(selectSQL);
+			while(rs.next())	//마지막 idx값
+				idx = rs.getInt("idx");	//최신 idx값
+			String deleteSQL = "delete from bookmarkTable where idx = '" + idx + "';";
 			stmt.executeUpdate(deleteSQL);
 		
 			stmt.close();
@@ -170,21 +163,22 @@ public class MyDBServiceImpl implements MyDBService {
 		}
 	}
 	//리뷰작성
+	@Override
 	public void writeReview(String shopId, String userId, float grade, String text, String imgurl) {
 		String selectSQL = "select review_id from reviewTable;";
 		try {
 			Class.forName(DRIVER);
 			Connection conn = DriverManager.getConnection(DB);
 			Statement stmt = conn.createStatement();
-			int idx = 0;
+			idx = 0;
 			ResultSet rs = stmt.executeQuery(selectSQL);
 			String insertSQL = "";
 			while(rs.next())	//마지막 idx값
 				idx = rs.getInt("review_id")+1;	//최신 idx값
 			if(imgurl == null) {
-				insertSQL = "insert into reviewTable(review_id, shop_id, user_id, grade, review, writeday) values("+idx+", "+shopId+", "+userId+", "+grade+", '"+text+"', datetime('now'));";
+				insertSQL = "insert into reviewTable(review_id, shop_id, user_email, grade, review, writeday) values("+idx+", "+shopId+", '"+userId+"', "+grade+", '"+text+"', datetime('now'));";
 			}else
-				insertSQL = "insert into reviewTable values("+idx+", "+shopId+", "+userId+", "+grade+", '"+text+"', '"+imgurl+"', datetime('now'));";
+				insertSQL = "insert into reviewTable values("+idx+", "+shopId+", '"+userId+"', "+grade+", '"+text+"', '"+imgurl+"', datetime('now'));";
 			stmt.executeUpdate(insertSQL);
 			
 			rs.close();
@@ -195,19 +189,57 @@ public class MyDBServiceImpl implements MyDBService {
 			e.printStackTrace();
 		}
 	}
-	//리뷰 삭제
-	public void DeleteReview(String writeday) {
-		String selectSQL = "select review_id from reviewTable where writeday = '"+writeday+"';";
+	//writeday로 review_id를 반환하는 메소드
+	@Override
+	public String FindEditReview(String writeday, String userId) {
+		String selectSQL = "select review_id from reviewTable where user_email = '" + userId + "' and writeday = '"+writeday+"';";
+		String review_id = "";
 		try {
 			Class.forName(DRIVER);
 			Connection conn = DriverManager.getConnection(DB);
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(selectSQL);
-			int idx = 0;
+			
 			if(rs.next())
-				idx = rs.getInt("review_id");
+				review_id = rs.getString("review_id");
+			
+			rs.close();
+			stmt.close();
+			conn.close();	
+		} catch (SQLException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return review_id;
+	}
+	//리뷰 수정
+	@Override
+	public void EditReview(String reviewId, String text, String imgurl) {
+		try {
+			Class.forName(DRIVER);
+			Connection conn = DriverManager.getConnection(DB);
+			Statement stmt = conn.createStatement();
 
-			String deleteSQL = "delete from reviewTable where review_id = " + idx + ";";
+			String updateSQL = "Update reviewTable set review = '" + text + "', imgURL = '" + imgurl + "',"
+					+ " writeday = datetime('now') where review_id = " + reviewId + ";";
+			stmt.executeUpdate(updateSQL);
+			
+			stmt.close();
+			conn.close();
+		} catch (SQLException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	//리뷰 삭제
+	@Override
+	public void DeleteReview(String reviewId) {
+		try {
+			Class.forName(DRIVER);
+			Connection conn = DriverManager.getConnection(DB);
+			Statement stmt = conn.createStatement();
+			
+			String deleteSQL = "delete from reviewTable where review_id = " + reviewId + ";";
 			stmt.executeUpdate(deleteSQL);
 		
 			stmt.close();
@@ -217,6 +249,8 @@ public class MyDBServiceImpl implements MyDBService {
 			e.printStackTrace();
 		}
 	}
+
+	
 	
 	
 	/*	//사장님 저장

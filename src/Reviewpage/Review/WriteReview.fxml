@@ -12,7 +12,7 @@
 <VBox prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #7FC9B7;" 
 	xmlns="http://javafx.com/javafx/8" 
 	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="Reviewpage.Review.WriteReviewController">
+	fx:controller="ReviewPackage.WriteReviewController">
    <children>
       <Label fx:id="WriteTitleLbl" prefHeight="50.0" prefWidth="170.0" text="리뷰 쓰기" textFill="WHITE">
          <font>
@@ -23,12 +23,12 @@
          <children>
             <Label prefHeight="25.0" style="-fx-background-color: #ffffff;" text=" 작성자 : " textFill="#7fc9b7">
                <font>
-                  <Font name="나눔바른고딕" size="20.0" />
+                  <Font name="나눔바른고딕" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="WriterNameLbl" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #ffffff;" text="닉네임" textFill="#7fc9b7">
+            <Label fx:id="WriterNameLbl" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #ffffff;" text="닉네임" textFill="#7fc9b7">
                <font>
-                  <Font name="나눔바른고딕" size="20.0" />
+                  <Font name="나눔바른고딕" size="16.0" />
                </font>
             </Label>
             <FlowPane prefHeight="24.0" prefWidth="121.0" style="-fx-background-color: #ffffff;">
@@ -37,7 +37,7 @@
                      <effect>
                         <ImageInput>
                            <source>
-                              <Image url="Reviewpage/image/white_star1.png" />
+                              <Image url="/image/white_star1.png" />
                            </source>
                         </ImageInput>
                      </effect>
@@ -49,7 +49,7 @@
                      <effect>
                         <ImageInput>
                            <source>
-                              <Image url="Reviewpage/image/white_star1.png" />
+                              <Image url="/image/white_star1.png" />
                            </source>
                         </ImageInput>
                      </effect>
@@ -61,7 +61,7 @@
                      <effect>
                         <ImageInput>
                            <source>
-                              <Image url="Reviewpage/image/white_star1.png" />
+                              <Image url="/image/white_star1.png" />
                            </source>
                         </ImageInput>
                      </effect>
@@ -73,7 +73,7 @@
                      <effect>
                         <ImageInput>
                            <source>
-                              <Image url="Reviewpage/image/white_star1.png" />
+                              <Image url="/image/white_star1.png" />
                            </source>
                         </ImageInput>
                      </effect>
@@ -85,7 +85,7 @@
                      <effect>
                         <ImageInput>
                            <source>
-                              <Image url="Reviewpage/image/white_star1.png" />
+                              <Image url="/image/white_star1.png" />
                            </source>
                         </ImageInput>
                      </effect>
@@ -137,7 +137,7 @@
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="Reviewpage/image/submitbtn.png" />
+                        <Image url="/image/submitbtn.png" />
                      </source>
                   </ImageInput>
                </effect>
@@ -146,7 +146,7 @@
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="Reviewpage/image/cancelbtn.png" />
+                        <Image url="/image/cancelbtn.png" />
                      </source>
                   </ImageInput>
                </effect>

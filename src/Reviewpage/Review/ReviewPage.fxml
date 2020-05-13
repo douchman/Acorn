@@ -8,10 +8,10 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="MainBorderPane" prefHeight="600.0" prefWidth="800.0" 
+<BorderPane fx:id="MainBorderPane" styleClass="root" prefHeight="600.0" prefWidth="800.0" 
 	xmlns="http://javafx.com/javafx/8" 
 	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="Reviewpage.Review.ReviewPageController">
+	fx:controller="ReviewPackage.ReviewPageController">
    <center>
       <VBox fx:id="MainVBox" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
@@ -23,16 +23,16 @@
                            <children>
                               <ImageView fx:id="ImgViewer" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="Reviewpage/image/그림1.png" />
+                                    <Image url="image/그림1.png" />
                                  </image>
                               </ImageView>
                               <HBox prefHeight="150.0" prefWidth="200.0" spacing="140.0">
                                  <children>
-                                    <Button fx:id="LeftBtn" onAction="#ImgLeftpage" mnemonicParsing="false" opacity="0.5" prefHeight="109.0" prefWidth="34.0" text="Button">
+                                    <Button fx:id="LeftBtn" onAction="#ImgLeftpageProc" mnemonicParsing="false" opacity="0.5" prefHeight="109.0" prefWidth="34.0" text="Button">
                                        <effect>
                                           <ImageInput>
                                              <source>
-                                                <Image url="Reviewpage/image/leftBtn.png" />
+                                                <Image url="image/leftBtn.png" />
                                              </source>
                                           </ImageInput>
                                        </effect>
@@ -40,11 +40,11 @@
                                           <Insets top="20.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button fx:id="RightBtn" onAction="#ImgRightpage" mnemonicParsing="false" opacity="0.5" prefHeight="109.0" prefWidth="34.0" text="Button">
+                                    <Button fx:id="RightBtn" onAction="#ImgRightpageProc" mnemonicParsing="false" opacity="0.5" prefHeight="109.0" prefWidth="34.0" text="Button">
                                        <effect>
                                           <ImageInput>
                                              <source>
-                                                <Image url="Reviewpage/image/rightBtn.png" />
+                                                <Image url="image/rightBtn.png" />
                                              </source>
                                           </ImageInput>
                                        </effect>
@@ -148,7 +148,7 @@
                                  <effect>
                                     <ImageInput>
                                        <source>
-                                          <Image url="Reviewpage/image/bookmark.PNG" />
+                                          <Image url="image/bookmark.PNG" />
                                        </source>
                                     </ImageInput>
                                  </effect></ToggleButton>
@@ -156,7 +156,7 @@
                                  <effect>
                                     <ImageInput>
                                        <source>
-                                          <Image url="Reviewpage/image/link.png" />
+                                          <Image url="image/link.png" />
                                        </source>
                                     </ImageInput>
                                  </effect></Button>
@@ -224,7 +224,7 @@
                                              <effect>
                                                 <ImageInput>
                                                    <source>
-                                                      <Image url="Reviewpage/image/writebtn.png" />
+                                                      <Image url="image/writebtn.png" />
                                                    </source>
                                                 </ImageInput>
                                              </effect>
@@ -268,7 +268,7 @@
                            <children>
                               <ImageView fx:id="TabInfoMapViewer" fitHeight="300.0" fitWidth="400.0" layoutX="43.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="Reviewpage/image/mapex.PNG" />
+                                    <Image url="image/mapex.PNG" />
                                  </image>
                               </ImageView>
                               <VBox fx:id="TabInfoVBox" layoutX="498.0" layoutY="26.0" prefHeight="200.0" prefWidth="229.0" style="-fx-border-color: #ffffff;">

@@ -10,9 +10,12 @@ public interface MyDBService {
 	public String ReviewSQL(String shopId);
 	public String BookmarkSQL(String userId);
 	public String WriteSQL(String userId);
+	public String EditSQL(String reviewId);
 	public String EmailSQL(String shopId);
 	public void insertBookmark(String shopId, String userId);
-	public void deleteBookmark(String shopId, String userId);
+	public void deleteBookmark(String userId);
 	public void writeReview(String shopId, String userId, float grade, String text, String imgurl);
-	public void DeleteReview(String writeday);
+	public String FindEditReview(String writeday, String userId);
+	public void EditReview(String reviewId, String text, String imgurl);
+	public void DeleteReview(String reviewId);
 }

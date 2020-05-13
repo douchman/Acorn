@@ -1,7 +1,10 @@
 package Reviewpage.Service;
 
-import javafx.event.ActionEvent;
+import javafx.scene.Parent;
 
 public interface ReviewListService {
-	public String getWriteday(ActionEvent e);
+	public String findWriteday(Parent form);
+	public String findReviewId(String userId, String writeday);
+	public void DeleteReviewServ(Parent form, String userId);
+	public void UpdateReviewServ(Parent form, String userId, String reviewId);
 }

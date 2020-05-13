@@ -8,10 +8,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane style="-fx-background-color: #7FC9B7;" 
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"  style="-fx-background-color: #7FC9B7;" 
 	xmlns="http://javafx.com/javafx/8" 
 	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="Reviewpage.Review.ReviewListController">
+	fx:controller="ReviewPackage.ReviewListController"
+	>
    <padding>
     <Insets top="5.0" />
    </padding>
@@ -46,7 +47,7 @@
                <children>
                   <ImageView fx:id="TabReviewImgview" fitHeight="20.0" fitWidth="125.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="Reviewpage/image/date.png" />
+                        <Image url="/image/date.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="TabReviewWriteDate" alignment="CENTER" prefHeight="20.0" prefWidth="125.0" text="2020.01.01 00:00" textFill="WHITE">
@@ -63,7 +64,7 @@
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="Reviewpage/image/list_reportBtn.png" />
+                        <Image url="image/list_reportBtn.png" />
                      </source>
                   </ImageInput>
                </effect></Button>
@@ -73,7 +74,7 @@
    <left>
       <ImageView fx:id="TabReviewImgViewer" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="Reviewpage/image/그림1.png" />
+            <Image url="image/그림1.png" />
          </image>
       </ImageView>
    </left>
@@ -92,11 +93,11 @@
    <right>
       <FlowPane orientation="VERTICAL" prefHeight="110.0" prefWidth="50.0" vgap="30.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="TabReviewEditBtn" mnemonicParsing="false" prefHeight="20.0" prefWidth="49.0" disable="true" opacity="0.0">
+            <Button fx:id="TabReviewEditBtn" onAction="#UpdateReviewProc" mnemonicParsing="false" prefHeight="20.0" prefWidth="49.0" disable="true" opacity="0.0">
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="Reviewpage/image/list_editBtn.png" />
+                        <Image url="image/list_editBtn.png" />
                      </source>
                   </ImageInput>
                </effect></Button>
@@ -104,12 +105,12 @@
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="Reviewpage/image/list_deleteBtn.png" />
+                        <Image url="image/list_deleteBtn.png" />
                      </source>
                   </ImageInput>
                </effect>
                <FlowPane.margin>
-                  <Insets top="20.0" />
+                  <Insets top="10.0" />
                </FlowPane.margin></Button>
          </children>
          <opaqueInsets>
