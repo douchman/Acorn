@@ -1,6 +1,7 @@
 package MainMenu.MainPage;
 
 public class Restaurant {
+	
 	private String name;
 	private String category;
 	private int price;
@@ -13,7 +14,7 @@ public class Restaurant {
 	private int rate;
 	private int visit;
 	private int rid;
-
+	
 	public String getName() {
 		return name;
 	}

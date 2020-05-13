@@ -7,7 +7,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:controller="MainMenu.Creat.CreatController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="539.0" prefWidth="345.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane fx:controller="MainMenu.Creat.CreatController" 
+maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" 
+prefHeight="539.0" prefWidth="345.0" 
+xmlns="http://javafx.com/javafx/8" 
+xmlns:fx="http://javafx.com/fxml/1">
    <center>
       <VBox prefHeight="416.0" prefWidth="325.0" spacing="10.0" style="-fx-border-color: lightgrey;" BorderPane.alignment="CENTER">
          <children>
@@ -41,7 +45,7 @@
                </font>
             </Label>
             <TextField fx:id="repasswordTxtF" prefHeight="30.0" prefWidth="600.0" promptText="PW (At least 6 characters)" />
-            <Button fx:id="creatBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="345.0" text="Creat your DOTORI account" />
+            <Button fx:id="creatBtn" onAction="#registBtnPressed" mnemonicParsing="false" prefHeight="30.0" prefWidth="345.0" text="Creat your DOTORI account" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

@@ -51,6 +51,8 @@ public class FirstPageServiceImpl implements FirstPageService {
 		return root;
 	}
 	
+	
+
 	public void WindowClose(ActionEvent event) {
 		Parent root = (Parent)event.getSource();
 		Stage stage = (Stage) root.getScene().getWindow();

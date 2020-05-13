@@ -39,8 +39,7 @@ public class BrkAcornThread extends Thread{
 	@Override
 	public void run() {
 		while(flag) {
-		try {
-			
+		try {		
 			Thread.sleep(10);
 			time  = System.currentTimeMillis()-preTime;
 			Min = (int)(time / 1000.0 /60.0);
