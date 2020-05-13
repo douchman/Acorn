@@ -3,8 +3,12 @@ package MainMenu.MainPage.Service;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class TopFieldServiceImpl implements TopFieldService {
@@ -26,6 +30,22 @@ public class TopFieldServiceImpl implements TopFieldService {
 		return Stxt;
 	}
 
+	@Override
+	public void wReview(Parent root) {
+		int rid=0;
+		@SuppressWarnings("unchecked")
+		ListView<HBox> lv = (ListView<HBox>)root.lookup("#CListView");
+		
+		if(lv.getSelectionModel().getSelectedItem()==null) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Error");
+			alert.setHeaderText("리뷰를 작성할 수 없습니다");
+			alert.setContentText("리스트에서 리뷰를 작성할 식당을 선택해주세요");
+			alert.showAndWait();
+		}
+		else 
+			System.out.println(lv.getSelectionModel().selectedItemProperty().get().getUserData());
+	}
 
 
 }

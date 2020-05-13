@@ -129,6 +129,7 @@ public abstract class Roulette {
 				maxEntry = enrty;
 			}
 		}
+		
 		System.out.println("name : "+maxEntry.getKey().getName());
 		System.out.println("최소값 : " + maxEntry.getKey().getDistance());
 		System.out.println("최소값 : " + maxEntry.getValue());

@@ -8,8 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
- 
-public  class Controller extends Controller2{
+
+
+public  class Controller extends MainMenu.FirstPage.Controller{
 	private Parent root;
  
 	@Override
@@ -64,7 +65,8 @@ public  class Controller extends Controller2{
     	
     }
     public void CancelBtn(ActionEvent event) {
-    	
+    	Stage stage = (Stage) root.getScene().getWindow();
+		stage.close();
     }
 }
     

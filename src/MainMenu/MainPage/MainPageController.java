@@ -33,8 +33,6 @@ public class MainPageController extends Controller implements Initializable{
 		this.root = root;
 		sideservice.RandomList(root);
 		mapservice.creatpin(root);
-		
-		
 	}
 	
 	@Override
@@ -62,8 +60,8 @@ public class MainPageController extends Controller implements Initializable{
 	}
 	
 	
-	public void review() {
-		
+	public void review(MouseEvent e) {
+		topservice.wReview(root);
 	}
 	
 	public void login(ActionEvent e) {

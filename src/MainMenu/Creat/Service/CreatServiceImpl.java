@@ -16,7 +16,7 @@ import javafx.scene.control.TextField;
 public class CreatServiceImpl implements CreatService {
 
 	final static String DRIVER = "org.sqlite.JDBC";
-	final static String DB = "jdbc:sqlite:C:/AcornDB/Member.db";
+	final static String DB = "jdbc:sqlite:C:/AcornDB/Restaurant.db";
 	Parent root;
 	private List<TextField> list_txtField;
 	private TextField nameField,idField, pwField, pwChkField;

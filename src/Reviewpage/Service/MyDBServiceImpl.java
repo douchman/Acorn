@@ -10,7 +10,7 @@ import java.util.TreeMap;
 
 public class MyDBServiceImpl implements MyDBService {
 	final String DRIVER = "org.sqlite.JDBC";
-	final String DB = "jdbc:sqlite:C:/AcornDB/Shop.db";
+	final String DB = "jdbc:sqlite:C:/AcornDB/Restaurant.db";
 	
 	//해당 필드를 찾아서 String으로 반환(단, 하나의 값만)
 	public Map<Integer, String> selectDB(String SQL, String fieldname) {
