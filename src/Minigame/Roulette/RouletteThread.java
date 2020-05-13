@@ -99,7 +99,7 @@ public class RouletteThread extends Thread{
 			}
 			
 		}
-		System.out.println(Thread.currentThread().getName());
+		//System.out.println(Thread.currentThread().getName());
 	}
 
 }

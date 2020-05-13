@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DBServiceImpl implements DBService {
 	
 	final static String DRIVER = "org.sqlite.JDBC";
-	final static String DB = "jdbc:sqlite:C:/AcornDB/Restaurant.db";
+	final static String DB = "jdbc:sqlite:C:/AcornDB/Member.db";
 	
 	Connection conn;
 

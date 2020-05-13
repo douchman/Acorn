@@ -15,17 +15,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <BorderPane prefHeight="570.0" prefWidth="700.0">
-               <top>
-                  <HBox fx:id="startField" prefHeight="35.0" prefWidth="700.0" spacing="40.0" BorderPane.alignment="CENTER" />
-               </top>
-               <bottom>
-                  <HBox fx:id="endField" prefHeight="35.0" prefWidth="700.0" spacing="40.0" BorderPane.alignment="CENTER" />
-               </bottom>
-               <center>
-                  <AnchorPane fx:id="ladderField" prefHeight="500.0" prefWidth="700.0" BorderPane.alignment="CENTER" />
-               </center>
-            </BorderPane>
+            <AnchorPane fx:id="ladderField" prefHeight="637.0" prefWidth="700.0" />
          </children>
       </VBox>
       <VBox prefHeight="600" prefWidth="150.0" spacing="10.0">

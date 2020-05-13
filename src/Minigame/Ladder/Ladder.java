@@ -19,10 +19,10 @@ public class Ladder {
 	
 	private final static int MAX_NODE_CNT = 5;
 	private int idx;
-	private FXMLLoader main;
+	private FXMLLoader main, result;
 	private Component compo;
-	private Parent rootLadder;
-	private Stage ladderStage;
+	private Parent rootLadder, rootResult;
+	private Stage ladderStage, resultPage;
 	private AnchorPane ladderField;
 	private Button btnAddSlot,btnClear, btnMakeladder;
 	private List<TextField> listStartNode, listEndNode;
@@ -39,7 +39,8 @@ public class Ladder {
 	// #startField   #endField
 	public Ladder() {
 		idx = 0;
-		main = new FXMLLoader(getClass().getResource("../FXML/ladder3.fxml"));
+		main = new FXMLLoader(getClass().getResource("../FXML/ladder.fxml"));
+		result = new FXMLLoader(getClass().getResource("../FXML/ladderResult.fxml"));
 		compo = new Component();
 		
 		listStartNode = new ArrayList<TextField>();
@@ -52,9 +53,14 @@ public class Ladder {
 		try {
 		
 			rootLadder = main.load();
+			rootResult = result.load();
+			
 			ladderStage = new Stage();
+			//resultPage = new Stage();
+			
 			ladderStage.setScene(new Scene(rootLadder));
-	
+			//resultPage.setScene(new Scene(rootResult));
+			
 			setComponent();		
 			
 		} catch (IOException e) {
@@ -70,6 +76,7 @@ public class Ladder {
 		btnMakeladder = (Button)rootLadder.lookup("#btnMakeladder");
 		
 		ladderField = (AnchorPane)rootLadder.lookup("#ladderField");
+		btnMakeladder.setDisable(true);
 		
 		btnAddSlot.setOnAction(e->{
 			addSlot();
@@ -87,7 +94,7 @@ public class Ladder {
 	
 	private void clearField() {
 		//새로만들기
-		
+		btnMakeladder.setDisable(true);
 		LadderFieldLayoutX = 0.0;
 		idx=0;
 		fieldCnt=0;
@@ -121,6 +128,9 @@ public class Ladder {
 			btnAddSlot.setDisable(true);
 			// 슬롯노드의 수가 최대치를 넘어가면 버튼 비활성화
 		}
+		if(fieldCnt >=2) {
+			btnMakeladder.setDisable(false);
+		}
 		listStartNode.add(compo.getLadderTxtField(LadderFieldLayoutX, 0.0));
 		listEndNode.add(compo.getLadderTxtField(LadderFieldLayoutX, 545.0));
 		
@@ -140,6 +150,7 @@ public class Ladder {
 	}
 
 	private void makeLadder() {
+		btnMakeladder.setDisable(true);
 		btnAddSlot.setDisable(true);
 		// 사다리 만들기를하면 중간에 추가할 수 없도록 막는다.
 		ladderField.getChildren().clear();
@@ -161,9 +172,11 @@ public class Ladder {
 	
 		for(int idx =0; idx<fieldCnt; idx++) {	
 			//System.out.println("직선 그려짐");
-			listLine.add(new LadderLine(ladderField,
-					  listStartBtn.get(idx),listEndLabel.get(idx)
-					  ));
+			listLine.add(new LadderLine(
+					  ladderField,
+					  listStartBtn.get(idx),
+					  listEndLabel.get(idx)
+					  ,rootResult,listEndLabel));
 			
 			ladderField.getChildren().add(listLine.get(idx));
 			listLine.get(idx).setBtn(listStartBtn.get(idx));
@@ -194,6 +207,7 @@ public class Ladder {
 				if(!dotList.get(j).isDraw() && !LinkeddotList.get(j).isDraw() ) {
 					// 해당 도트에 루트가 연결이 되어있지 않을경우
 					// 즉 flag 값이 false 일 경우 그린다.
+					
 					Line line =compo.getLine(
 							dotList.get(j).X, 
 							dotList.get(j).Y, 
@@ -324,15 +338,13 @@ public class Ladder {
 				listLine.get(i).addDotY(tmpDotY, listLine.get(i+1));		
 			}
 			loop = Math.abs(loop - listDotCnt.get(i+1));
-			System.out.println("=== "+(i+1)+"번 라인" +"===");
-			listLine.get(i).displayDot();
+			//System.out.println("=== "+(i+1)+"번 라인" +"===");
+			//listLine.get(i).displayDot();
 		}	
 		//System.out.println("=== "+(i+1)+"번 라인" +"===");
 		//listLine.get(i).displayDot();
 	}
-	
-	
-	
+
 	public void startLadder() {
 		ladderStage.show();
 	}

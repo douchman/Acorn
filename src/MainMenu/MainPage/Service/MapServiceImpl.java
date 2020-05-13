@@ -39,7 +39,7 @@ public class MapServiceImpl implements MapService {
 			
 			c.setOnMouseClicked(e->{
 				resetpin(root);
-				pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,lstR, root);
+				pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,lstR);
 				pinTolist(root, c);
 			});
 
@@ -60,7 +60,7 @@ public class MapServiceImpl implements MapService {
 			
 			c.setOnMouseClicked(e->{
 				resetpin(root);
-				pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,m,lstRm,root);
+				pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,m,lstRm);
 				pinTolist(root, c);
 			});
 
@@ -82,7 +82,7 @@ public class MapServiceImpl implements MapService {
 			
 			c.setOnMouseClicked(e->{
 				resetpin(root);
-				pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,txt,lstRm,root);
+				pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,txt,lstRm);
 				pinTolist(root, c);
 			});
 
@@ -101,7 +101,7 @@ public class MapServiceImpl implements MapService {
 		}	
 	}
 	
-	public void pluspin(AnchorPane ap, String id, double clx, double cly, List<Restaurant> lstR, Parent root) {
+	public void pluspin(AnchorPane ap, String id, double clx, double cly, List<Restaurant> lstR) {
 		
 		List<String> rn = rnameset(lstR);
 		String rname = rn.get(Integer.parseInt(id)-1);
@@ -111,14 +111,10 @@ public class MapServiceImpl implements MapService {
 		sp.getChildren().addAll(r,new Text(rname));
 		ap.getChildren().add(sp);
 		
-		sp.setOnMouseClicked(e -> {
-			ListView<HBox> lv = (ListView<HBox>)root.lookup("#CListView");
-			System.out.println(lv.getSelectionModel().selectedItemProperty().get().getUserData());
-		});
 	
 	}
 	
-	public void pluspin(AnchorPane ap, String id, double clx, double cly, int m, List<Restaurant> lstRm, Parent root) {
+	public void pluspin(AnchorPane ap, String id, double clx, double cly, int m, List<Restaurant> lstRm) {
 		try {
 		List<String> rn = rnameset(lstRm, m);
 		String rname = rn.get(Integer.parseInt(id)-1);
@@ -127,17 +123,13 @@ public class MapServiceImpl implements MapService {
 		sp.getChildren().addAll(r,new Text(rname));
 		ap.getChildren().add(sp);
 		
-		sp.setOnMouseClicked(e -> {
-			ListView<HBox> lv = (ListView<HBox>)root.lookup("#CListView");
-			System.out.println(lv.getSelectionModel().selectedItemProperty().get().getUserData());
-		});
 		
 		} catch (Exception e2) {
 			e2.printStackTrace();
 		}
 	}
 	
-	public void pluspin(AnchorPane ap, String id, double clx, double cly, String txt, List<Restaurant> lstRm, Parent root) {
+	public void pluspin(AnchorPane ap, String id, double clx, double cly, String txt, List<Restaurant> lstRm) {
 		try {
 		List<String> rn = rnameset(lstRm, txt);
 		String rname = rn.get(Integer.parseInt(id)-1);
@@ -145,11 +137,6 @@ public class MapServiceImpl implements MapService {
 		Rectangle r = ctn.getR(80, 30, Color.PALETURQUOISE, Color.BLACK);
 		sp.getChildren().addAll(r,new Text(rname));
 		ap.getChildren().add(sp);
-		
-		sp.setOnMouseClicked(e -> {
-			ListView<HBox> lv = (ListView<HBox>)root.lookup("#CListView");
-			System.out.println(lv.getSelectionModel().selectedItemProperty().get().getUserData());
-		});
 		
 
 		} catch (Exception e2) {

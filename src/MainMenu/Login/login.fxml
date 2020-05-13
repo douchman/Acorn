@@ -47,7 +47,7 @@
                   <Font name="NanumGothicBold" size="12.0" />
                </font>
             </Button>
-            <Button onAction="#AdminLogin" fx:id="creatBtn2" mnemonicParsing="false" prefHeight="23.0" prefWidth="345.0" text="관리자 로그인">
+            <Button fx:id="creatBtn2" mnemonicParsing="false" prefHeight="23.0" prefWidth="345.0" text="관리자 로그인">
                <font>
                   <Font name="NanumGothicBold" size="12.0" />
                </font>

@@ -35,16 +35,12 @@ public class LoginController extends Controller implements Initializable {
 		service.WindowClose(e);
 	}
 
-	public void LoginBtnPressed(ActionEvent e) {
+	public void LoginBtnPressed() {
 		loginServ.LoginProc(root);
-		service.WindowClose(e);
 	}
 	public void setTextProperty() {
 		loginServ.setTextFieldProperty(root);
 	}
 
-	public void AdminLogin(ActionEvent e) {
-		loginServ.AdminLogin(root);
-		service.WindowClose(e);
-	}
+	
 }

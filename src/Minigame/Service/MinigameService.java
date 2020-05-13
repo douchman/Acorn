@@ -2,6 +2,7 @@ package Minigame.Service;
 
 import java.io.IOException;
 
+import MainMenu.MainPage.MainPageController;
 import Minigame.MiniGameController;
 import Minigame.BrkAcorn.BrkAcorn;
 import Minigame.Ladder.Ladder;
@@ -13,9 +14,19 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class MinigameService implements MinigameServiceImpl{
+
+	Ladder ladder;
+	RouletteMenu showRuulette;
+	BrkAcorn brkAcorn;
 	
+	
+	public MinigameService() {
+		ladder = new Ladder();
+		showRuulette = new RouletteMenu(null);
+		brkAcorn = new BrkAcorn();
+	}
 	@Override
-	public void showMenu() {
+	public void showMenu(MainPageController mainCon) {
 		Stage stage = new Stage();
 		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("../FXML/MinigameMenu.fxml"));
@@ -23,7 +34,9 @@ public class MinigameService implements MinigameServiceImpl{
 			Parent root = loader.load();
 			MiniGameController miniCon = loader.getController();
 			miniCon.setRoot(root);
-		
+			miniCon.setMainPageCon(mainCon, this);
+			showRuulette.setMainCon(mainCon);
+			
 			stage.setScene(new Scene(root));
 			stage.show();
 			
@@ -35,21 +48,21 @@ public class MinigameService implements MinigameServiceImpl{
 	}
 
 	@Override
-	public void runRoulette(Parent root) {
-		RouletteMenu showRuulette = new RouletteMenu();
+	public void runRoulette(Parent root,MainPageController miniCon ) {
+		//RouletteMenu showRuulette = new RouletteMenu();
 		showRuulette.displayMenu();		
 	}
 	
 	@Override
 	public void runLadder(Parent root) {
-		Ladder ladder = new Ladder();
+		//Ladder ladder = new Ladder();
 		ladder.startLadder();
 		
 	}
 	
 	@Override
 	public void runBrkAcorn(Parent root) {
-		BrkAcorn brkAcorn = new BrkAcorn();
+		//BrkAcorn brkAcorn = new BrkAcorn();
 		brkAcorn.runBrkAcorn();
 		
 	}

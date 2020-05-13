@@ -21,7 +21,7 @@ public class FirstPageServiceImpl implements FirstPageService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println(s);
+		
 		Controller ctrler = loader.getController();
 		ctrler.setRoot(root);
 		s.setResizable(false);
@@ -59,10 +59,5 @@ public class FirstPageServiceImpl implements FirstPageService {
 		stage.close();
 	}
 
-	public void WindowClose(Parent root) {
-		Stage stage = (Stage) root.getScene().getWindow();
-		stage.close();
-	}
 
-	
 }

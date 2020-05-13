@@ -6,7 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import MainMenu.MainPage.MainPageController;
 import Minigame.Component;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -22,7 +24,6 @@ public abstract class Roulette {
 	
 	// 각 룰렛마다 다르게 구현해야할 메서드는 각 룰렛에 해당하는 컨텐츠 변경 메서드
 	Runnable testRun;
-	Thread Thread;
 	RouletteThread rouletteThread;
 	
 	private Arc pin;
@@ -32,6 +33,7 @@ public abstract class Roulette {
 	private Stage stage;
 	private Button btnFunc, btnChngMod,btnRotate,btnStop;
 	private Component compo;
+	private MainPageController mainCon;
 	//private List<String> listContents = new ArrayList<String>();
 	private List<String> listContents;
 	//private List<Arc> listrouletteContents = new ArrayList<Arc>();
@@ -47,8 +49,9 @@ public abstract class Roulette {
 	private Pane pane;
 	private RouletteMenu rouletteMenu;
 	
-	public Roulette(RouletteMenu rouletteMenu) {
+	public Roulette(RouletteMenu rouletteMenu, MainPageController mainCon) {
 		this.rouletteMenu = rouletteMenu;
+		this.mainCon = mainCon;
 		compo = new Component();
 		loader = new FXMLLoader(getClass().
 				getResource("../FXML/roulette2.fxml"));
@@ -129,11 +132,29 @@ public abstract class Roulette {
 				maxEntry = enrty;
 			}
 		}
-		
+		String str = maxEntry.getKey().getName();
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				stage.close();
+				try {
+					Thread.sleep(3000);
+					mainCon.Tsearch(str);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+			}
+		});
+		System.out.println("name : "+maxEntry.getKey().getName());
+		/*
 		System.out.println("name : "+maxEntry.getKey().getName());
 		System.out.println("최소값 : " + maxEntry.getKey().getDistance());
 		System.out.println("최소값 : " + maxEntry.getValue());
-		
+		*/
 		
 	}
 

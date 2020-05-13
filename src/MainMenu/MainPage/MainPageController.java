@@ -32,7 +32,7 @@ public class MainPageController extends Controller implements Initializable{
 	public void setRoot(Parent root) {
 		this.root = root;
 		sideservice.RandomList(root);
-		mapservice.creatpin(root);
+		mapservice.creatpin(root);		
 	}
 	
 	@Override
@@ -59,9 +59,16 @@ public class MainPageController extends Controller implements Initializable{
 		mapservice.creatpin(root,txt);
 	}
 	
+	public void Tsearch(String str){
+		sideservice.clear(root);
+		mapservice.clear(root);
+		sideservice.RandomList(root,str);
+		mapservice.creatpin(root,str);
+	}
 	
-	public void review(MouseEvent e) {
-		topservice.wReview(root);
+	
+	public void review() {
+		
 	}
 	
 	public void login(ActionEvent e) {
@@ -160,7 +167,7 @@ public class MainPageController extends Controller implements Initializable{
 	}
 	
 	public void startMinigame(MouseEvent e) {
-		gameservice.showMenu();
+		gameservice.showMenu(this);
 		
 	}
 	

@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.event.ActionEvent;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -13,12 +15,15 @@ public class LadderLine extends Line{
 	int DotX;
 	List<Dot> listDot;
 	List<Dot> listLinkedDot;
+	private List<LadderLabel> endLabel;
 	private LadderLabel lbl;
 	private LadderBtn btn;
 	private AnchorPane ladderField;
 	private LadderThread ladderT;
-	
-	public LadderLine(AnchorPane ladderField, LadderBtn btn, LadderLabel lbl) {
+	private Parent root;
+	// 사다리 결과 처리를 위한 루트
+	// Ladder 클래스에서 로드되어짐
+	public LadderLine(AnchorPane ladderField, LadderBtn btn, LadderLabel lbl, Parent root, List<LadderLabel> endLabel) {
 		/*
 		this.setStartX(startX);
 		this.setStartY(startY);
@@ -27,6 +32,8 @@ public class LadderLine extends Line{
 		*/
 		listDot = new ArrayList<Dot>();
 		listLinkedDot = new ArrayList<Dot>();
+		this.endLabel = endLabel;
+		this.root = root;
 		this.setStartX(btn.getCenterX());
 		this.setStartY(btn.getCenterY());
 		this.setEndX(lbl.getCenterX());
@@ -38,7 +45,7 @@ public class LadderLine extends Line{
 		//System.out.println(this.DotX);
 		this.setFill(Color.BLACK);
 		this.setStrokeWidth(2);
-		ladderT = new LadderThread(btn, lbl, this, ladderField);
+		//ladderT = new LadderThread(btn, lbl, this, ladderField);
 		
 		
 		//setOwnDot(startX,endY, startY);
@@ -81,7 +88,9 @@ public class LadderLine extends Line{
 		// 링크된 도트리스트에 넣는 메서드
 		listLinkedDot.add(dot);
 	}
-
+	public Button getLadderBtn() {
+		return btn;
+	}
 
 	public void setBtn(LadderBtn btn) {
 		this.btn = btn;
@@ -95,6 +104,7 @@ public class LadderLine extends Line{
 	public void btnPressed(ActionEvent e) {
 		//Button btn = (Button)e.getSource();
 		//System.out.println(btn.getText());
+		ladderT = new LadderThread(btn, lbl, this, ladderField, root,endLabel );
 		ladderT.start();
 		
 	}
