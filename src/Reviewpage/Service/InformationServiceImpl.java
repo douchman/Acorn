@@ -46,10 +46,10 @@ public class InformationServiceImpl implements InformationService{
 		if(bookmarkBtn.isSelected() || mark) {
 			if(mark)	
 				bookmarkBtn.setSelected(true);
-			bookmarkBtn.setEffect(new ImageInput(new Image("/image/bookmark2.PNG")));
+			bookmarkBtn.setEffect(new ImageInput(new Image("/Reviewpage/image/bookmark2.PNG")));
 			dbserv.insertBookmark(shopId, userId);
 		}else {
-			bookmarkBtn.setEffect(new ImageInput(new Image("/image/bookmark.PNG")));
+			bookmarkBtn.setEffect(new ImageInput(new Image("/Reviewpage/image/bookmark.PNG")));
 			dbserv.deleteBookmark(userId);
 		}
 	}
@@ -57,7 +57,7 @@ public class InformationServiceImpl implements InformationService{
 	@Override
 	public void LinkServ(Stage stage, Parent form, String shopId) {
 		stage = new Stage();
-		comserv.OpenWindow(stage, "/ReviewPackage/LinkPage.fxml", "Link");
+		comserv.OpenWindow(stage, "/ReviewPage/Review/LinkPage.fxml", "Link");
 		form = comserv.getRoot();
 		Label lbl = (Label)form.lookup("#LinkShopNameLbl");
 		TextField tf = (TextField)form.lookup("#LinkInformationTF");

@@ -11,7 +11,7 @@
 <BorderPane fx:id="MainBorderPane" styleClass="root" prefHeight="600.0" prefWidth="800.0" 
 	xmlns="http://javafx.com/javafx/8" 
 	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="ReviewPackage.ReviewPageController">
+	fx:controller="Reviewpage.Review.ReviewPageController">
    <center>
       <VBox fx:id="MainVBox" prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
@@ -23,7 +23,7 @@
                            <children>
                               <ImageView fx:id="ImgViewer" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="image/그림1.png" />
+                                  <Image url="/Reviewpage/image/그림1.png" />
                                  </image>
                               </ImageView>
                               <HBox prefHeight="150.0" prefWidth="200.0" spacing="140.0">
@@ -32,7 +32,7 @@
                                        <effect>
                                           <ImageInput>
                                              <source>
-                                                <Image url="image/leftBtn.png" />
+                                                <Image url="/Reviewpage/image/leftBtn.png" />
                                              </source>
                                           </ImageInput>
                                        </effect>
@@ -44,7 +44,7 @@
                                        <effect>
                                           <ImageInput>
                                              <source>
-                                                <Image url="image/rightBtn.png" />
+                                                <Image url="/Reviewpage/image/rightBtn.png" />
                                              </source>
                                           </ImageInput>
                                        </effect>
@@ -148,7 +148,7 @@
                                  <effect>
                                     <ImageInput>
                                        <source>
-                                          <Image url="image/bookmark.PNG" />
+                                          <Image url="/Reviewpage/image/bookmark.PNG" />
                                        </source>
                                     </ImageInput>
                                  </effect></ToggleButton>
@@ -156,7 +156,7 @@
                                  <effect>
                                     <ImageInput>
                                        <source>
-                                          <Image url="image/link.png" />
+                                          <Image url="/Reviewpage/image/link.png" />
                                        </source>
                                     </ImageInput>
                                  </effect></Button>
@@ -224,7 +224,7 @@
                                              <effect>
                                                 <ImageInput>
                                                    <source>
-                                                      <Image url="image/writebtn.png" />
+                                                      <Image url="/Reviewpage/image/writebtn.png" />
                                                    </source>
                                                 </ImageInput>
                                              </effect>
@@ -268,7 +268,7 @@
                            <children>
                               <ImageView fx:id="TabInfoMapViewer" fitHeight="300.0" fitWidth="400.0" layoutX="43.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="image/mapex.PNG" />
+                                    <Image url="/Reviewpage/image/mapex.PNG" />
                                  </image>
                               </ImageView>
                               <VBox fx:id="TabInfoVBox" layoutX="498.0" layoutY="26.0" prefHeight="200.0" prefWidth="229.0" style="-fx-border-color: #ffffff;">

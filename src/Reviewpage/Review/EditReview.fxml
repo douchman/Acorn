@@ -11,7 +11,7 @@
 
 <VBox prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #7FC9B7;" 
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="ReviewPackage.EditReviewController">
+	fx:controller="Reviewpage.Review.EditReviewController">
    <children>
       <Label fx:id="WriteTitleLbl" prefHeight="50.0" prefWidth="170.0" text="리뷰 수정" textFill="WHITE">
          <font>

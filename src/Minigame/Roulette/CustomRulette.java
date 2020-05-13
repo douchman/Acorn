@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import MainMenu.MainPage.MainPageController;
 import Minigame.Component;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,8 +24,8 @@ public class CustomRulette extends Roulette{
 	private Stage menu;
 	private Parent root;
 	private VBox contentsList;
-	public CustomRulette(RouletteMenu rouletteMenu, MainPageController mainCon) {
-		super(rouletteMenu, mainCon);
+	public CustomRulette(RouletteMenu rouletteMenu) {
+		super(rouletteMenu);
 		listTxtfield = new ArrayList<TextField>();
 		listContents = new ArrayList<String>();
 		

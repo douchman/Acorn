@@ -11,7 +11,7 @@
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"  style="-fx-background-color: #7FC9B7;" 
 	xmlns="http://javafx.com/javafx/8" 
 	xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="ReviewPackage.ReviewListController"
+	fx:controller="Reviewpage.Review.ReviewListController"
 	>
    <padding>
     <Insets top="5.0" />
@@ -47,7 +47,7 @@
                <children>
                   <ImageView fx:id="TabReviewImgview" fitHeight="20.0" fitWidth="125.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="/image/date.png" />
+                        <Image url="/Reviewpage/image/date.png" />
                      </image>
                   </ImageView>
                   <Label fx:id="TabReviewWriteDate" alignment="CENTER" prefHeight="20.0" prefWidth="125.0" text="2020.01.01 00:00" textFill="WHITE">
@@ -64,7 +64,7 @@
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="image/list_reportBtn.png" />
+                        <Image url="/Reviewpage/image/list_reportBtn.png" />
                      </source>
                   </ImageInput>
                </effect></Button>
@@ -74,7 +74,7 @@
    <left>
       <ImageView fx:id="TabReviewImgViewer" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
          <image>
-            <Image url="image/그림1.png" />
+            <Image url="/Reviewpage/image/그림1.png" />
          </image>
       </ImageView>
    </left>
@@ -97,7 +97,7 @@
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="image/list_editBtn.png" />
+                        <Image url="/Reviewpage/image/list_editBtn.png" />
                      </source>
                   </ImageInput>
                </effect></Button>
@@ -105,7 +105,7 @@
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="image/list_deleteBtn.png" />
+                        <Image url="/Reviewpage/image/list_deleteBtn.png" />
                      </source>
                   </ImageInput>
                </effect>

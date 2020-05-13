@@ -12,7 +12,7 @@ public class MyDBServiceImpl implements MyDBService {
 	final String DRIVER = "org.sqlite.JDBC";
 	//final String DB = "jdbc:sqlite:src/Shop.db";
 	//final String DB = "jdbc:sqlite:C:/자바취업반_이세근/Project/Shop.db";
-	final String DB = "jdbc:sqlite:C:/자바취업반_이세근/Project/restaurant.db";
+	final String DB = "jdbc:sqlite:C:/AcornDB/Restaurant.db";
 	int idx;
 	
 	//해당 필드를 찾아서 Map에 String값으로 반환(단, 하나 사용시 selectDB().get(0)으로 사용)
@@ -238,8 +238,8 @@ public class MyDBServiceImpl implements MyDBService {
 			Class.forName(DRIVER);
 			Connection conn = DriverManager.getConnection(DB);
 			Statement stmt = conn.createStatement();
-			
-			String deleteSQL = "delete from reviewTable where review_id = " + reviewId + ";";
+			System.out.println(reviewId);
+			String deleteSQL = "delete from reviewTable where review_id = " + reviewId +";";
 			stmt.executeUpdate(deleteSQL);
 		
 			stmt.close();

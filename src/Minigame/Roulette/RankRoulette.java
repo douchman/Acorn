@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import MainMenu.MainPage.MainPageController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,8 +32,8 @@ public class RankRoulette extends Roulette{
 	//private List<Arc> listRouletteArc;
 
 	
-	public RankRoulette(RouletteMenu rouletteMenu, MainPageController mainCon) {
-		super(rouletteMenu, mainCon);
+	public RankRoulette(RouletteMenu rouletteMenu) {
+		super(rouletteMenu);
 		
 		menu = new Stage();
 		listContents = new ArrayList<String>();

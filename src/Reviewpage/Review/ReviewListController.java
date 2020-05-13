@@ -24,13 +24,16 @@ import javafx.stage.Stage;
 
 public class ReviewListController extends Controller implements Initializable{
 	final String SHOPID = "1";
-	final String USERID = "aa1@mail.com";
+	final String USERID = "ahn@acorn.com";
 	private Parent root;
 	Stage stage;
 	ReviewListService rvlistserv;
 	CommonService comserv;
 	// 박상현 추가 
 	ReviewPageController reviewCon;
+	
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		rvlistserv = new ReviewListServiceImpl();

@@ -21,16 +21,17 @@ public class ReviewListServiceImpl implements ReviewListService{
 	@Override
 	public void DeleteReviewServ(Parent form, String userId) {
 		// TODO Auto-generated method stub
+		System.out.println(userId);
 		dbserv.DeleteReview(dbserv.FindEditReview(findWriteday(form), userId));
 	}
 
 	private void FixGradeStar(Label lbl, int grade) {
 		switch(grade) {
-		case 1:	lbl.setGraphic(new ImageView("image/GoldStar01.PNG")); break;
-		case 2: lbl.setGraphic(new ImageView("image/GoldStar02.PNG")); break;
-		case 3: lbl.setGraphic(new ImageView("image/GoldStar03.PNG")); break;
-		case 4: lbl.setGraphic(new ImageView("image/GoldStar04.PNG")); break;
-		case 5: lbl.setGraphic(new ImageView("image/GoldStar05.PNG")); break;
+		case 1:	lbl.setGraphic(new ImageView("/Reviewpage/image/GoldStar01.PNG")); break;
+		case 2: lbl.setGraphic(new ImageView("/Reviewpage/image/GoldStar02.PNG")); break;
+		case 3: lbl.setGraphic(new ImageView("/Reviewpage/image/GoldStar03.PNG")); break;
+		case 4: lbl.setGraphic(new ImageView("/Reviewpage/image/GoldStar04.PNG")); break;
+		case 5: lbl.setGraphic(new ImageView("/Reviewpage/image/GoldStar05.PNG")); break;
 		}
 	}
 	@Override

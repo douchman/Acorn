@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -37,9 +38,10 @@ public class TabServiceImpl implements TabService{
 	public void TabMenu(Parent form, String shopId) {	
 		Map<Integer, String> Mapmenu = dbserv.selectDB(dbserv.MenuSQL(shopId), "shop_menu");
 		VBox menulstvbox = (VBox)form.lookup("#TabMenuListVBox");
+		System.out.println(menulstvbox);
 		menulstvbox.getChildren().clear();
 		for(Integer i : Mapmenu.keySet()) {
-			Parent menulstform = comserv.ListForm("/ReviewPackage/MenuList.fxml", false);
+			Parent menulstform = comserv.ListForm("/Reviewpage/Review/MenuList.fxml", false);
 			comserv.ShowLabel(menulstform, "#TabMenuName", dbserv.selectDB(dbserv.MenuSQL(shopId), "shop_menu").get(i));
 			comserv.ShowLabel(menulstform, "#TabMenuPrice", dbserv.selectDB(dbserv.MenuSQL(shopId), "price").get(i));
 			menulstvbox.getChildren().add(menulstform);
@@ -76,7 +78,7 @@ public class TabServiceImpl implements TabService{
 		VBox revwlstvbox = (VBox)form.lookup("#TabReviewListVBox");
 		revwlstvbox.getChildren().clear();
 		for(Integer i : Maprevw.keySet()) {
-			Parent revwlstform = comserv.ListForm("/ReviewPackage/ReviewList.fxml", true);
+			Parent revwlstform = comserv.ListForm("/Reviewpage/Review/ReviewList.fxml", true);
 			String email = hideEmail(dbserv.selectDB(dbserv.EmailSQL(shopId), "substr(email, 1, instr(email,'@')-1)").get(i));
 			comserv.ShowLabel(revwlstform, "#TabReviewWriter", dbserv.selectDB(dbserv.ReviewSQL(shopId), "name").get(i)+"("+email+")");
 			
@@ -104,7 +106,7 @@ public class TabServiceImpl implements TabService{
 	@Override
 	public void WriteReviewServ(Stage stage, Parent form, String userId , String shopId, ReviewPageController rvCon) {
 		stage = new Stage();
-		FXMLLoader loader= comserv.OpenReviewPage(stage, "/ReviewPackage/WriteReview.fxml", "Write Review");
+		FXMLLoader loader= comserv.OpenReviewPage(stage, "/Reviewpage/Review/WriteReview.fxml", "Write Review");
 		form = comserv.getRoot();
 		WriteReviewController reviewCon = loader.getController();
 		reviewCon.setShopID(shopId);

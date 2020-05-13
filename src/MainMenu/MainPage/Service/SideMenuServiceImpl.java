@@ -1,16 +1,23 @@
 package MainMenu.MainPage.Service;
 
+import java.io.IOException;
 import java.util.List;
 
+import MainMenu.FirstPage.Service.FirstPageService;
+import MainMenu.FirstPage.Service.FirstPageServiceImpl;
 import MainMenu.MainPage.Restaurant;
 import MainMenu.MainPage.Data.RestaurantDataManage;
 import MainMenu.MainPage.Data.RestaurantDataManageImpl;
+import Reviewpage.Review.ReviewListController;
+import Reviewpage.Review.ReviewPageController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
@@ -19,15 +26,19 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 
 public class SideMenuServiceImpl implements SideMenuService{	
    
 	Container ctn;
 	MapServiceImpl mapservice;
+	FirstPageService fservice;
+
 	
 	public SideMenuServiceImpl() {
 		ctn = new Container();
 		mapservice = new MapServiceImpl();
+		fservice=new FirstPageServiceImpl();
 	}
 
 	@Override
@@ -40,6 +51,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 			@SuppressWarnings("unchecked")
 			ListView<HBox> lv = (ListView<HBox>)root.lookup("#CListView");
 			HBox hb = ctn.getHB(5, Integer.toString(num));
+			hb.setUserData(restaurant.getRid());
 			VBox vb = ctn.getVB(5, 5, Pos.CENTER_LEFT);
 			
 			ImageView img = ctn.getImg(setImg(restaurant.getImage()), false, 80, 80);
@@ -63,7 +75,12 @@ public class SideMenuServiceImpl implements SideMenuService{
 				@Override
 				public void handle(MouseEvent click) {
 					if(click.getClickCount() == 2) {
-						System.out.println(restaurant.getRid());
+		
+					
+						OpenReviewpage(restaurant.getRid());
+						
+			
+						
 					}
 				}
 			});
@@ -84,6 +101,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 			@SuppressWarnings("unchecked")
 			ListView<HBox> lv = (ListView<HBox>)root.lookup("#CListView");
 			HBox hb = ctn.getHB(5, Integer.toString(num));
+			hb.setUserData(restaurant.getRid());
 			VBox vb = ctn.getVB(5, 5, Pos.CENTER_LEFT);
 			
 			ImageView img = ctn.getImg(setImg(restaurant.getImage()), false, 80, 80);
@@ -104,7 +122,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 				@Override
 				public void handle(MouseEvent click) {
 					if(click.getClickCount() == 2) {
-						System.out.println(restaurant.getRid());
+						OpenReviewpage(restaurant.getRid());
 					}
 				}
 			});
@@ -125,6 +143,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 			@SuppressWarnings("unchecked")
 			ListView<HBox> lv = (ListView<HBox>)root.lookup("#CListView");
 			HBox hb = ctn.getHB(5, Integer.toString(num));
+			hb.setUserData(restaurant.getRid());
 			VBox vb = ctn.getVB(5, 5, Pos.CENTER_LEFT);
 			
 			ImageView img = ctn.getImg(setImg(restaurant.getImage()), false, 80, 80);
@@ -145,7 +164,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 				@Override
 				public void handle(MouseEvent click) {
 					if(click.getClickCount() == 2) {
-						System.out.println(restaurant.getRid());
+						OpenReviewpage(restaurant.getRid());
 					}
 				}
 			});
@@ -172,7 +191,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 						AnchorPane ap = (AnchorPane)root.lookup("#mapPane");
 						Circle c = (Circle)ap.lookup("#"+nodeout.getParent().getId());
 						mapservice.resetpin(root);
-						mapservice.pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,lstR);			
+						mapservice.pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,lstR, root);			
 					} catch (Exception e2) {
 						e2.printStackTrace();
 						}			   
@@ -198,7 +217,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 					AnchorPane ap = (AnchorPane)root.lookup("#mapPane");
 					Circle c = (Circle)ap.lookup("#"+nodeout.getParent().getId());
 					mapservice.resetpin(root);
-					mapservice.pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40, m, lstRm);			
+					mapservice.pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40, m, lstRm, root);			
 					} catch (Exception e2) {
 						e2.printStackTrace();
 					}
@@ -222,7 +241,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 					AnchorPane ap = (AnchorPane)root.lookup("#mapPane");
 					Circle c = (Circle)ap.lookup("#"+nodeout.getParent().getId());
 					mapservice.resetpin(root);
-					mapservice.pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40, txt, lstRm);			
+					mapservice.pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40, txt, lstRm, root);			
 					} catch (Exception e2) {
 						e2.printStackTrace();
 					}
@@ -286,7 +305,27 @@ public class SideMenuServiceImpl implements SideMenuService{
 		}
 	}
 
-
+	private void OpenReviewpage(int rid) {
+	      FXMLLoader loader  = new FXMLLoader(getClass().getResource("/ReviewPage/Review/ReviewPage.fxml"));
+	      Parent root = null;
+	      try {
+	         root = loader.load();
+	      } catch (IOException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	      ReviewPageController reviewCon = loader.getController();
+	      reviewCon.setRoot(root);
+	      reviewCon.setId(rid, "ahn@acorn.com");
+	      ReviewListController rlc = new ReviewListController();
+	   
+	      
+	      Stage stage = new Stage();
+	      stage.setScene(new Scene(root));
+	      stage.show();
+	      
+	      reviewCon.Reviewstart();
+	   }
 
 
 

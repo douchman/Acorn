@@ -33,9 +33,9 @@ public class WriterServiceImpl implements WriterService{
 	//리뷰 작성)별(점수) 버튼 클릭시 이미지 바꾸기  
 	private void ToggleImg(ToggleButton tbtn) {
 		if(tbtn.isSelected())
-			tbtn.setEffect(new ImageInput(new Image("/image/white_star2.png")));
+			tbtn.setEffect(new ImageInput(new Image("/Reviewpage/image/white_star2.png")));
 		else
-			tbtn.setEffect(new ImageInput(new Image("/image/white_star1.png")));
+			tbtn.setEffect(new ImageInput(new Image("/Reviewpage/image/white_star1.png")));
 	}
 	//리뷰 작성)별 버튼 5개 서비스
 	@Override

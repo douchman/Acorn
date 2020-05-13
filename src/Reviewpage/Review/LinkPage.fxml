@@ -8,7 +8,7 @@
 
 <Pane prefHeight="150.0" prefWidth="300.0" style="-fx-background-color: #5FAE95;" 
 	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-	fx:controller="ReviewPackage.LinkController">
+	fx:controller="Reviewpage.Review.LinkController">
    <children>
       <Label fx:id="LinkShopNameLbl" layoutX="15.0" layoutY="30.0" text="Label" textFill="WHITE">
          <font>
