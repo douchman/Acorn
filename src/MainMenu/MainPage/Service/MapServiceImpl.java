@@ -33,7 +33,7 @@ public class MapServiceImpl implements MapService {
 	}
 	
 	@Override
-	public void creatpin(Parent root) {
+	public void creatpin(Parent root, String usrID) {
 		RestaurantDataManage restaurantData = new RestaurantDataManageImpl();
 		List<Restaurant> lstR = restaurantData.getRestaurant();
 		AnchorPane ap = (AnchorPane)root.lookup("#mapPane");
@@ -45,7 +45,7 @@ public class MapServiceImpl implements MapService {
 			
 			c.setOnMouseClicked(e->{
 				resetpin(root);
-				pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,lstR, root);
+				pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,lstR, root,usrID);
 				pinTolist(root, c);
 			});
 
@@ -54,7 +54,7 @@ public class MapServiceImpl implements MapService {
 	}
 	
 	@Override
-	public void creatpin(Parent root, int m) {
+	public void creatpin(Parent root, int m, String usrID) {
 		RestaurantDataManage restaurantData = new RestaurantDataManageImpl();
 		List<Restaurant> lstRm = restaurantData.getRestaurant(m);
 		AnchorPane ap = (AnchorPane)root.lookup("#mapPane");
@@ -66,7 +66,7 @@ public class MapServiceImpl implements MapService {
 			
 			c.setOnMouseClicked(e->{
 				resetpin(root);
-				pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,m,lstRm,root);
+				pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,m,lstRm,root,usrID);
 				pinTolist(root, c);
 			});
 
@@ -76,7 +76,7 @@ public class MapServiceImpl implements MapService {
 	}
 	
 	@Override
-	public void creatpin(Parent root, String txt) {
+	public void creatpin(Parent root, String txt, String usrID) {
 		RestaurantDataManage restaurantData = new RestaurantDataManageImpl();
 		List<Restaurant> lstRm = restaurantData.getRestaurant(txt);
 		AnchorPane ap = (AnchorPane)root.lookup("#mapPane");
@@ -88,7 +88,7 @@ public class MapServiceImpl implements MapService {
 			
 			c.setOnMouseClicked(e->{
 				resetpin(root);
-				pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,txt,lstRm,root);
+				pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,txt,lstRm,root,usrID);
 				pinTolist(root, c);
 			});
 
@@ -107,7 +107,7 @@ public class MapServiceImpl implements MapService {
 		}	
 	}
 	
-	public void pluspin(AnchorPane ap, String id, double clx, double cly, List<Restaurant> lstR, Parent root) {
+	public void pluspin(AnchorPane ap, String id, double clx, double cly, List<Restaurant> lstR, Parent root, String usrID) {
 		
 		List<String> rn = rnameset(lstR);
 		String rname = rn.get(Integer.parseInt(id)-1);
@@ -120,12 +120,12 @@ public class MapServiceImpl implements MapService {
 		sp.setOnMouseClicked(e -> {
 			ListView<HBox> lv = (ListView<HBox>)root.lookup("#CListView");
 			int rid = Integer.parseInt(lv.getSelectionModel().selectedItemProperty().get().getUserData().toString());
-			OpenReviewpage(rid);
+			OpenReviewpage(rid,usrID);
 		});
 	
 	}
 	
-	public void pluspin(AnchorPane ap, String id, double clx, double cly, int m, List<Restaurant> lstRm, Parent root) {
+	public void pluspin(AnchorPane ap, String id, double clx, double cly, int m, List<Restaurant> lstRm, Parent root, String usrID) {
 		try {
 		List<String> rn = rnameset(lstRm, m);
 		String rname = rn.get(Integer.parseInt(id)-1);
@@ -137,7 +137,7 @@ public class MapServiceImpl implements MapService {
 		sp.setOnMouseClicked(e -> {
 			ListView<HBox> lv = (ListView<HBox>)root.lookup("#CListView");
 			int rid = Integer.parseInt(lv.getSelectionModel().selectedItemProperty().get().getUserData().toString());
-			OpenReviewpage(rid);
+			OpenReviewpage(rid,usrID);
 		});
 		
 		} catch (Exception e2) {
@@ -145,7 +145,7 @@ public class MapServiceImpl implements MapService {
 		}
 	}
 	
-	public void pluspin(AnchorPane ap, String id, double clx, double cly, String txt, List<Restaurant> lstRm, Parent root) {
+	public void pluspin(AnchorPane ap, String id, double clx, double cly, String txt, List<Restaurant> lstRm, Parent root, String usrID) {
 		try {
 		List<String> rn = rnameset(lstRm, txt);
 		String rname = rn.get(Integer.parseInt(id)-1);
@@ -157,7 +157,7 @@ public class MapServiceImpl implements MapService {
 		sp.setOnMouseClicked(e -> {
 			ListView<HBox> lv = (ListView<HBox>)root.lookup("#CListView");
 			int rid = Integer.parseInt(lv.getSelectionModel().selectedItemProperty().get().getUserData().toString());
-			OpenReviewpage(rid);
+			OpenReviewpage(rid,usrID);
 		});
 		
 
@@ -212,7 +212,7 @@ public class MapServiceImpl implements MapService {
 		ap.getChildren().removeIf(Circle.class::isInstance);
 	}
 	
-	private void OpenReviewpage(int rid) {
+	private void OpenReviewpage(int rid, String usrID) {
 	      FXMLLoader loader  = new FXMLLoader(getClass().getResource("/ReviewPage/Review/ReviewPage.fxml"));
 	      Parent root = null;
 	      try {
@@ -223,9 +223,8 @@ public class MapServiceImpl implements MapService {
 	      }
 	      ReviewPageController reviewCon = loader.getController();
 	      reviewCon.setRoot(root);
-	      reviewCon.setId(rid, "ahn@acorn.com");
-	      ReviewListController rlc = new ReviewListController();
-	   
+	      reviewCon.setId(rid, usrID);
+
 	      
 	      Stage stage = new Stage();
 	      stage.setScene(new Scene(root));

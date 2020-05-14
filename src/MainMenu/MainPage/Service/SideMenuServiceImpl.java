@@ -5,6 +5,7 @@ import java.util.List;
 
 import MainMenu.FirstPage.Service.FirstPageService;
 import MainMenu.FirstPage.Service.FirstPageServiceImpl;
+import MainMenu.MainPage.MainPageController;
 import MainMenu.MainPage.Restaurant;
 import MainMenu.MainPage.Data.RestaurantDataManage;
 import MainMenu.MainPage.Data.RestaurantDataManageImpl;
@@ -42,7 +43,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 	}
 
 	@Override
-	public void RandomList(Parent root) {
+	public void RandomList(Parent root, String usrID) {
 		RestaurantDataManage restaurantData = new RestaurantDataManageImpl();
 		List<Restaurant> lstR = restaurantData.getRestaurant();
 		
@@ -67,7 +68,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 			lv.getItems().add(hb);
 
 			
-			listTopin(root, restaurant.getName(), lstR);
+			listTopin(root, restaurant.getName(), lstR,usrID);
 			
 	
 			
@@ -77,7 +78,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 					if(click.getClickCount() == 2) {
 		
 					
-						OpenReviewpage(restaurant.getRid());
+						OpenReviewpage(restaurant.getRid(),usrID);
 						
 			
 						
@@ -91,7 +92,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 	}
 	
 	@Override
-	public void RandomList(Parent root, int m) {
+	public void RandomList(Parent root, int m, String usrID) {
 		RestaurantDataManage restaurantData = new RestaurantDataManageImpl();
 		List<Restaurant> lstRm = restaurantData.getRestaurant(m);
 		int num = 1;
@@ -116,13 +117,13 @@ public class SideMenuServiceImpl implements SideMenuService{
 			hb.getChildren().addAll(img,vb);
 			lv.getItems().add(hb);			
 			
-			listTopin(root, restaurant.getName(), m, lstRm);
+			listTopin(root, restaurant.getName(), m, lstRm,usrID);
 			
 			hb.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent click) {
 					if(click.getClickCount() == 2) {
-						OpenReviewpage(restaurant.getRid());
+						OpenReviewpage(restaurant.getRid(),usrID);
 					}
 				}
 			});
@@ -133,7 +134,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 	}
 	
 	@Override
-	public void RandomList(Parent root, String txt) {
+	public void RandomList(Parent root, String txt, String usrID) {
 		RestaurantDataManage restaurantData = new RestaurantDataManageImpl();
 		List<Restaurant> lstRm = restaurantData.getRestaurant(txt);
 		int num = 1;
@@ -158,13 +159,13 @@ public class SideMenuServiceImpl implements SideMenuService{
 			hb.getChildren().addAll(img,vb);
 			lv.getItems().add(hb);			
 			
-			listTopin(root, restaurant.getName(), txt, lstRm);
+			listTopin(root, restaurant.getName(), txt, lstRm,usrID);
 		
 			hb.setOnMouseClicked(new EventHandler<MouseEvent>() {
 				@Override
 				public void handle(MouseEvent click) {
 					if(click.getClickCount() == 2) {
-						OpenReviewpage(restaurant.getRid());
+						OpenReviewpage(restaurant.getRid(),usrID);
 					}
 				}
 			});
@@ -176,7 +177,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 	}
 	
 	
-	public void listTopin(Parent root, String rname, List<Restaurant> lstR) {
+	public void listTopin(Parent root, String rname, List<Restaurant> lstR, String usrID) {
 		
 		try {
 			@SuppressWarnings("unchecked")
@@ -191,7 +192,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 						AnchorPane ap = (AnchorPane)root.lookup("#mapPane");
 						Circle c = (Circle)ap.lookup("#"+nodeout.getParent().getId());
 						mapservice.resetpin(root);
-						mapservice.pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,lstR, root);			
+						mapservice.pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40,lstR, root,usrID);			
 					} catch (Exception e2) {
 						e2.printStackTrace();
 						}			   
@@ -204,7 +205,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 			}
 	}
 	
-	public void listTopin(Parent root, String rname, int m, List<Restaurant> lstRm) {
+	public void listTopin(Parent root, String rname, int m, List<Restaurant> lstRm, String usrID) {
 		
 		try {
 			@SuppressWarnings("unchecked")
@@ -217,7 +218,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 					AnchorPane ap = (AnchorPane)root.lookup("#mapPane");
 					Circle c = (Circle)ap.lookup("#"+nodeout.getParent().getId());
 					mapservice.resetpin(root);
-					mapservice.pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40, m, lstRm, root);			
+					mapservice.pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40, m, lstRm, root,usrID);			
 					} catch (Exception e2) {
 						e2.printStackTrace();
 					}
@@ -228,7 +229,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 			}
 	}
 	
-	public void listTopin(Parent root, String rname, String txt, List<Restaurant> lstRm) {
+	public void listTopin(Parent root, String rname, String txt, List<Restaurant> lstRm, String usrID) {
 		
 		try {
 			@SuppressWarnings("unchecked")
@@ -241,7 +242,7 @@ public class SideMenuServiceImpl implements SideMenuService{
 					AnchorPane ap = (AnchorPane)root.lookup("#mapPane");
 					Circle c = (Circle)ap.lookup("#"+nodeout.getParent().getId());
 					mapservice.resetpin(root);
-					mapservice.pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40, txt, lstRm, root);			
+					mapservice.pluspin(ap, c.getId(), c.getLayoutX()-40, c.getLayoutY()-40, txt, lstRm, root,usrID);			
 					} catch (Exception e2) {
 						e2.printStackTrace();
 					}
@@ -305,9 +306,10 @@ public class SideMenuServiceImpl implements SideMenuService{
 		}
 	}
 
-	private void OpenReviewpage(int rid) {
+	private void OpenReviewpage(int rid, String usrID) {
 	      FXMLLoader loader  = new FXMLLoader(getClass().getResource("/ReviewPage/Review/ReviewPage.fxml"));
 	      Parent root = null;
+	     
 	      try {
 	         root = loader.load();
 	      } catch (IOException e) {
@@ -316,8 +318,9 @@ public class SideMenuServiceImpl implements SideMenuService{
 	      }
 	      ReviewPageController reviewCon = loader.getController();
 	      reviewCon.setRoot(root);
-	      reviewCon.setId(rid, "ahn@acorn.com");
-	      ReviewListController rlc = new ReviewListController();
+	      System.out.println(usrID);
+	      reviewCon.setId(rid, usrID);
+
 	   
 	      
 	      Stage stage = new Stage();
@@ -328,5 +331,6 @@ public class SideMenuServiceImpl implements SideMenuService{
 	   }
 
 
+	
 
 }
