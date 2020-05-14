@@ -6,7 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import MainMenu.MainPage.MainPageController;
 import Minigame.Component;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -22,7 +24,6 @@ public abstract class Roulette {
 	
 	// 각 룰렛마다 다르게 구현해야할 메서드는 각 룰렛에 해당하는 컨텐츠 변경 메서드
 	Runnable testRun;
-	Thread Thread;
 	RouletteThread rouletteThread;
 	
 	private Arc pin;
@@ -32,6 +33,7 @@ public abstract class Roulette {
 	private Stage stage;
 	private Button btnFunc, btnChngMod,btnRotate,btnStop;
 	private Component compo;
+	private MainPageController mainCon;
 	//private List<String> listContents = new ArrayList<String>();
 	private List<String> listContents;
 	//private List<Arc> listrouletteContents = new ArrayList<Arc>();
@@ -45,17 +47,18 @@ public abstract class Roulette {
 									Color.MEDIUMSLATEBLUE,Color.PLUM};
 	private VBox ratioField;
 	private Pane pane;
-	private RouletteMenu rouletteMenu;
+	//private RouletteMenu rouletteMenu;
+	private RouletteMenuController rouletteMenuCon;
 	
-	public Roulette(RouletteMenu rouletteMenu) {
-		this.rouletteMenu = rouletteMenu;
+	public Roulette(RouletteMenuController rouletteMenuCon, MainPageController mainCon) {
+		this.rouletteMenuCon = rouletteMenuCon;
+		this.mainCon = mainCon;
 		compo = new Component();
 		loader = new FXMLLoader(getClass().
 				getResource("../FXML/roulette2.fxml"));
 		
 		stage = new Stage();
-		
-		
+			
 		try {
 
 			root = loader.load();
@@ -83,9 +86,10 @@ public abstract class Roulette {
 		btnFunc = (Button)root.lookup("#funcBtn");
 		btnRotate = (Button)root.lookup("#btnRotate");
 		btnStop =(Button)root.lookup("#btnStop");
+		btnRotate.setDisable(true);
+		btnStop.setDisable(true);
 		
 		btnFunc.setOnAction(e->{
-			
 			function();
 		});
 		btnChngMod.setOnAction(e->{
@@ -93,13 +97,21 @@ public abstract class Roulette {
 		});
 		
 		btnRotate.setOnAction(e->{
+			btnRotate.setDisable(true);
+			btnChngMod.setDisable(true);
+			btnFunc.setDisable(true);
+			btnStop.setDisable(false);
 			rotateRoulette();
 		});
 	
 		btnStop.setOnAction(e->{
+			btnStop.setDisable(true);
 			stopRoulette();
 		});
 		
+	}
+	public void RotateReady() {
+		btnRotate.setDisable(false);
 	}
 	public void rotateRoulette() {
 		rouletteThread = new RouletteThread(this,gr);
@@ -112,6 +124,10 @@ public abstract class Roulette {
 	
 	public void result() {
 		// 결과 처리 메서드
+		btnRotate.setDisable(false);
+		btnStop.setDisable(false);
+		btnChngMod.setDisable(false);
+		btnFunc.setDisable(false);
 		List<Double> listDistance = new ArrayList<Double>();
 		Map<RoulettePiece,Double> map = new HashMap<RoulettePiece,Double>();
 
@@ -129,11 +145,29 @@ public abstract class Roulette {
 				maxEntry = enrty;
 			}
 		}
-		
+		String str = maxEntry.getKey().getName();
+		Platform.runLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				stage.close();
+				try {
+					Thread.sleep(3000);
+					mainCon.Tsearch(str);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+			}
+		});
+		//System.out.println("name : "+maxEntry.getKey().getName());
+		/*
 		System.out.println("name : "+maxEntry.getKey().getName());
 		System.out.println("최소값 : " + maxEntry.getKey().getDistance());
 		System.out.println("최소값 : " + maxEntry.getValue());
-		
+		*/
 		
 	}
 
@@ -189,7 +223,7 @@ public abstract class Roulette {
 	
 	public void showModeMenu() {
 		stage.close();
-		rouletteMenu.displayMenu();
+		rouletteMenuCon.openMenu();
 	}
 	
 	public void setFuncBtnText(String str) {

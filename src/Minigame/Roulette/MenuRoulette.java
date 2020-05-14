@@ -1,10 +1,12 @@
 package Minigame.Roulette;
 
+import MainMenu.MainPage.MainPageController;
+
 public class MenuRoulette extends Roulette{
 
 	
-	public MenuRoulette(RouletteMenu rouletteMenu) {
-		super(rouletteMenu);
+	public MenuRoulette(RouletteMenuController rouletteMenuCon, MainPageController mainCon) {
+		super(rouletteMenuCon, mainCon);
 	}
 	@Override
 	public void setFuncBtn() {

@@ -60,12 +60,10 @@ public class RouletteThread extends Thread{
 							});
 				}
 								
-					//System.out.println(rotateValueStart);
 					
 					List<RoulettePiece> list = roulette.listrouletteContents2;
 					
 					for(int i =0; i<list.size();i++) {
-						//roulette.listrouletteContents2
 						double Degree = Math.toRadians(rotateValueStart);
 						double cos = Math.cos(Degree);
 						double sin = Math.sin(Degree);
@@ -99,7 +97,7 @@ public class RouletteThread extends Thread{
 			}
 			
 		}
-		System.out.println(Thread.currentThread().getName());
+		//System.out.println(Thread.currentThread().getName());
 	}
 
 }
