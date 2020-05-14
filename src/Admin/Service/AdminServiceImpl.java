@@ -9,7 +9,7 @@ public class AdminServiceImpl implements AdminService{
 	public Parent OpenBobManageForm() {
 		CommonService comServ = new CommonServiceImpl();
 		Stage membershipForm = new Stage();
-		Parent form =  comServ.showWindow(membershipForm, "../BobManagePage.fxml");
+		Parent form =  comServ.showWindow(membershipForm, "../AdminLogin/BobManagePage.fxml");
 		
 		return form;
 	}
