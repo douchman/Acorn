@@ -188,7 +188,7 @@ public class MainPageController extends Controller implements Initializable{
 	}
 	
 	public void startMinigame(MouseEvent e) {
-		gameservice.showMenu();
+		gameservice.showMenu(this);
 		
 	}
 	

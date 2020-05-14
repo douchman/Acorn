@@ -1,5 +1,6 @@
 package Minigame;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,9 +27,6 @@ public class MiniGameController implements Initializable{
 		this.root = root;
 	}
 	
-	public void setRoot(Parent root){
-		this.root = root;
-	}
 	public void setMainPageCon(MainPageController mainCon) {
 		this.mainCon = mainCon;
 	}
@@ -38,7 +36,7 @@ public class MiniGameController implements Initializable{
 		gameServcie = new MinigameService();		
 	}
 	
-	public void RouletteBtnPressed(ActionEvent event) {
+	public void RouletteBtnPressed(ActionEvent event) throws IOException {
 		commonService.closeWindow(root);
 		// ∑Í∑ø¿« Ω««‡¿Ã¥Ÿ.
 		Parent menuRoot;
