@@ -12,25 +12,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 
-
-/*
- * 
- * 리뷰 작성을 위한 컨트롤러
- * WriteReview.fxml 에서 로드 된다.
- * 
- * 
- * */
+//WriteReview.fxml의 컨트롤러
 public class WriteReviewController extends Controller implements Initializable{
-	//final String SHOPID = "1";
-	//final String USERID = "aa1@mail.com";
-	String shopid;
-	String userid;
+	private String shopId, userId;
 	private Parent root;
 	Stage stage;
 	CommonService comserv;
 	WriterService writerserv;	//리뷰작성 서비스
-	
-	ReviewPageController rvCon;
+	ReviewPageController rvpageCtrl;
 	
 	
 	@Override
@@ -44,15 +33,15 @@ public class WriteReviewController extends Controller implements Initializable{
 		
 	}
 	
-	public void setReviewCon(ReviewPageController rvCon) {
-		this.rvCon = rvCon;
+	public void setReviewCtrler(ReviewPageController rvpageCtrl) {
+		this.rvpageCtrl = rvpageCtrl;
 	}
 	
-	public void setShopID(String shopid) {
-		this.shopid = shopid;
+	public void setShopID(String shopId) {
+		this.shopId = shopId;
 	}
-	public void setUserID(String userid) {
-		this.userid = userid;
+	public void setUserID(String userId) {
+		this.userId = userId;
 	}
 	//별 버튼
 	public Integer star1() {
@@ -80,8 +69,8 @@ public class WriteReviewController extends Controller implements Initializable{
 	}
 	//작성 버튼
 	public void submitBtnProc(ActionEvent e) {
-		writerserv.submitBtnServ(root, shopid, userid);
-		rvCon.refresh();
+		writerserv.submitBtnServ(root, shopId, userId);
+		rvpageCtrl.refresh();
 		comserv.CloseWindow(e);
 	}
 }

@@ -66,10 +66,10 @@ public class MyDBServiceImpl implements MyDBService {
 				"and shop_id = " + shopId + ";";
 	}
 	@Override
-	public String BookmarkSQL(String userId) {
+	public String BookmarkSQL(String shopId, String userId) {
 		return "select email, name_id\n" + 
 				"from bookmarkTable\n" + 
-				"where email = '" + userId + "';";
+				"where email = '" + userId + "' and name_id = " + shopId + ";";
 	}
 	@Override
 	public String WriteSQL(String userId) {
@@ -92,7 +92,10 @@ public class MyDBServiceImpl implements MyDBService {
 				"where mem.email = rev.user_email\n" + 
 				"and shop_id = " + shopId + ";";
 	}
-	
+	@Override
+	public String AdminSQL(String userId) {
+		return "select admin_set from member where email = '" + userId + "';";
+	}
 	//식당)조회수 오르면 저장
 	@Override
 	public void insertView(String shopId) {
@@ -142,8 +145,8 @@ public class MyDBServiceImpl implements MyDBService {
 	}
 	//식당)찜 해제시 테이블에서 삭제
 	@Override
-	public void deleteBookmark(String userId) {	//isBookmark()실행 후 사용
-		String selectSQL = "select idx from bookmarkTable where email = '" + userId + "';";
+	public void deleteBookmark(String shopId, String userId) {	//isBookmark()실행 후 사용
+		String selectSQL = "select idx from bookmarkTable where email = '" + userId + "' and name_id = " + shopId + ";";
 		try {
 			Class.forName(DRIVER);
 			Connection conn = DriverManager.getConnection(DB);
@@ -152,7 +155,7 @@ public class MyDBServiceImpl implements MyDBService {
 			ResultSet rs = stmt.executeQuery(selectSQL);
 			while(rs.next())	//마지막 idx값
 				idx = rs.getInt("idx");	//최신 idx값
-			String deleteSQL = "delete from bookmarkTable where idx = '" + idx + "';";
+			String deleteSQL = "delete from bookmarkTable where idx = " + idx + ";";
 			stmt.executeUpdate(deleteSQL);
 		
 			stmt.close();
@@ -249,9 +252,6 @@ public class MyDBServiceImpl implements MyDBService {
 			e.printStackTrace();
 		}
 	}
-
-	
-	
 	
 	/*	//사장님 저장
 	private int focusIndex(String IndexFieldName) {
@@ -286,5 +286,4 @@ public class MyDBServiceImpl implements MyDBService {
 		
 	}
 	*/
-	
 }

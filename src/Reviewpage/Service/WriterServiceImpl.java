@@ -3,8 +3,6 @@ package Reviewpage.Service;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -14,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
+
 //리뷰 작성과 리뷰 수정 서비스
 public class WriterServiceImpl implements WriterService{
 	MyDBService dbserv;
@@ -25,11 +24,11 @@ public class WriterServiceImpl implements WriterService{
 		comserv = new CommonServiceImpl();
 	}
 	//리뷰 작성)TextArea 출력
-		@Override
-		public String getTA(Parent form, String fxId) {
-			TextArea ta = (TextArea)form.lookup(fxId);
-			return ta.getText();
-		}
+	@Override
+	public String getTA(Parent form, String fxId) {
+		TextArea ta = (TextArea)form.lookup(fxId);
+		return ta.getText();
+	}
 	//리뷰 작성)별(점수) 버튼 클릭시 이미지 바꾸기  
 	private void ToggleImg(ToggleButton tbtn) {
 		if(tbtn.isSelected())
@@ -51,7 +50,6 @@ public class WriterServiceImpl implements WriterService{
 			lstTBtn.get(i).setSelected(false);
 		for(int i=0;i<=4;i++)
 			ToggleImg(lstTBtn.get(i));
-		//System.out.println(lstTBtn.get(num-1).isSelected());
 		return num;
 	}
 	
@@ -89,11 +87,9 @@ public class WriterServiceImpl implements WriterService{
 		dbserv.writeReview(shopId, userId, grade, text, imgurl);
 		
 	}
-	//리뷰 수정)수정 버튼 서비스
+	//리뷰 수정)수정 버튼 서비스(미완)
 	@Override
 	public void EditBtnServ(Parent form) {
-					//reviewId 값 받기
-		//System.out.println("getReviewID : "+reviewId);
 		String text = getTA(form, "#WriteContentsTA");
 		String imgurl = comserv.getLabel(form, "#WriteReviewImgURLLbl");
 		if(imgurl.equals("사진없음")) 

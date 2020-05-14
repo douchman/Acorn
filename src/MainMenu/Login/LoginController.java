@@ -63,9 +63,9 @@ public class LoginController extends Controller implements Initializable {
 				// ÇöÀç Ã¢ ´Ý±â
 				Stage stg = (Stage)root.getScene().getWindow();
 				stg.close();
-			} catch (IOException e) {
+			} catch (IOException e1) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				e1.printStackTrace();
 			}
 			
 		}

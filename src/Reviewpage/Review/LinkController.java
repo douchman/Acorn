@@ -6,11 +6,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 
-/*
- *LinkPage.fxml 로드 
- * 
- * 
- * */
+//LinkPage.fxml에 대한 컨트롤러
 public class LinkController extends Controller implements Initializable {
 	Parent root;
 	@Override

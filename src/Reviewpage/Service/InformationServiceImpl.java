@@ -21,7 +21,8 @@ public class InformationServiceImpl implements InformationService{
 	//총 리뷰점수의 평균
 	private float getDBgrade(String shopId) {
 		return Float.parseFloat(dbserv.selectDB(dbserv.InformationSQL(shopId), "avg(grade)").get(0));
-	}//점수로 별 그리기
+	}
+	//점수로 별 그리기
 	private void ShowStar(String shopId) {
 		int grade = (int)getDBgrade(shopId);
 		String star = "[";
@@ -40,17 +41,37 @@ public class InformationServiceImpl implements InformationService{
 		str += String.format("%.1f", getDBgrade(shopId)) + "/5.0)";
 		comserv.ShowLabel(form, "#TitleStarNumLbl", str);
 	}
-	//북마크 서비스
-	public void BookmarkServ(Parent form, String shopId, String userId, boolean mark) {
+	//북마크 초기설정
+	private void isBookmark(Parent form, String shopId, String userId) {
+		String bookmark = dbserv.selectDB(dbserv.BookmarkSQL(shopId, userId), "email").get(0);
 		bookmarkBtn = (ToggleButton)form.lookup("#TitleBookmarkBtn");
-		if(bookmarkBtn.isSelected() || mark) {
-			if(mark)	
-				bookmarkBtn.setSelected(true);
+		if(userId.contentEquals("guest"))
+			bookmarkBtn.setVisible(false);
+		else
+			bookmarkBtn.setVisible(true);
+		
+		if(bookmark==null) {
+			bookmarkBtn.setSelected(false);
+		}else {
+			bookmarkBtn.setSelected(true);
+		}
+	}
+	//북마크 체크여부에 따른 이미지 변화
+	@Override
+	public void BookmarkImg(String shopId, String userId) {
+		if(bookmarkBtn.isSelected()) {
 			bookmarkBtn.setEffect(new ImageInput(new Image("/Reviewpage/image/bookmark2.PNG")));
-			dbserv.insertBookmark(shopId, userId);
 		}else {
 			bookmarkBtn.setEffect(new ImageInput(new Image("/Reviewpage/image/bookmark.PNG")));
-			dbserv.deleteBookmark(userId);
+		}
+	}
+	//북마크 서비스
+	@Override
+	public void BookmarkServ(String shopId, String userId) {
+		if(bookmarkBtn.isSelected()) {
+			dbserv.insertBookmark(shopId, userId);
+		}else {
+			dbserv.deleteBookmark(shopId, userId);
 		}
 	}
 	//링크 서비스
@@ -71,12 +92,9 @@ public class InformationServiceImpl implements InformationService{
 		this.form = form;
 		dbserv.insertView(shopId);	//조회수 증가("식당식별자")
 		comserv.ShowLabel(form, "#TitleLbl", dbserv.selectDB(dbserv.InformationSQL(shopId), "name").get(0));
-		String bookmark = dbserv.selectDB(dbserv.BookmarkSQL(userId), "email").get(0);
-		if(bookmark==null) 
-			BookmarkServ(form, shopId, userId, false);
-		else 
-			BookmarkServ(form, shopId, userId, true);
-		
+		isBookmark(form, shopId, userId);
+		BookmarkImg(shopId, userId);
+
 		ShowGradeLabel(shopId);
 		ShowStar(shopId);
 		comserv.ShowLabel(form, "#TitleAddressLbl", dbserv.selectDB(dbserv.InformationSQL(shopId), "address1").get(0));
@@ -84,7 +102,4 @@ public class InformationServiceImpl implements InformationService{
 		comserv.ShowLabel(form, "#TitleKindfoodLbl", dbserv.selectDB(dbserv.InformationSQL(shopId), "category").get(0));
 		comserv.ShowLabel(form, "#TitleViewLbl", dbserv.selectDB(dbserv.InformationSQL(shopId), "view").get(0));
 	}
-	
-	
-	
 }

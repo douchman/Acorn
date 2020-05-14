@@ -13,11 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 
@@ -29,35 +25,24 @@ import javafx.stage.Stage;
  * 
  * */
 public class ReviewPageController extends Controller implements Initializable{
-	final String SHOPID = "1";
-	final String USERID = "aa1@mail.com";
-	private Parent root, testRoot;
+	private String shopID, userID;
+	private Parent root;
 	Stage stage;
 	InformationService inforserv;	//메인 음식점 타이틀 서비스
 	CommonService comserv;
 	TabService tabserv;				//탭 서비스	
 	boolean mark;
-	
-	// 박상현 추가 및 수정
-	private String shopID, userID;
-	
+
 	@Override
 	public void setRoot(Parent root) {
-		// 지금 이부분도 상속은 받아놓고 쓰질않는것 같아요?
-		// 공통 서비스에서도 보면 root를 설정해주는게 있던데
-		// 제가 확인이 덜 되어서 확실하지않습니다.
 		this.root = root;
 	}
-	
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		inforserv = new InformationServiceImpl();
 		comserv = new CommonServiceImpl();
 		tabserv = new TabServiceImpl();
-		// 일단 초기화 메서드에서 탭서비스  등등
-		// 리뷰 페이지 구성하는데 있어서 필요한 서비스를 몽땅 할당함
-		mark = false;
 	}
 	public void setId(int shopid, String userid) {
 	      this.shopID = Integer.toString(shopid);
@@ -65,17 +50,13 @@ public class ReviewPageController extends Controller implements Initializable{
 	   }
 	public void Reviewstart() {
 		tabserv = new TabServiceImpl();
-		System.out.println(root);
 	      inforserv.TopInformation(root, shopID, userID );
 	      tabserv.TabMenu(root, shopID);
 	      tabserv.TabReview(root, shopID, userID, this);
 	      //comserv.CloseWindow(e);
 	   }
-	
-	
-	
-	//탭 클릭시 배경색과 같음
-		
+
+	//탭 클릭시 배경색과 같음	
 	private void ColorTab(Event e) {
 		Tab tab = (Tab)e.getTarget();
 		if(tab.isSelected()) {
@@ -111,7 +92,8 @@ public class ReviewPageController extends Controller implements Initializable{
 	}
 	//북마크버튼
 	public void BookmarkProc(ActionEvent e) {
-		inforserv.BookmarkServ(root, shopID, userID, false);
+		inforserv.BookmarkImg(shopID, userID);
+		inforserv.BookmarkServ(shopID, userID);
 	}
 	//링크버튼
 	public void LinkProc() {
@@ -124,7 +106,6 @@ public class ReviewPageController extends Controller implements Initializable{
 	  //리뷰 쓰기
 	public void WriteReviewProc() {
 		tabserv.WriteReviewServ(stage, root, userID, shopID, this);
-		//root.setVisible(true);
 	}
 	 //탭 페이지 - 공지
 	 //탭 페이지 - 찾아가기

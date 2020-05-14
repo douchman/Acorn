@@ -18,9 +18,8 @@ public class CommonServiceImpl implements CommonService{
 	private Parent form;
 	Controller ctrler;
 	Alert alert;
-	public CommonServiceImpl() {
-		
-	}
+	FXMLLoader loader;
+	
 	//OpenWindow메소드에서 부족한 루트 반환값
 	@Override
 	public Parent getRoot() {
@@ -34,11 +33,9 @@ public class CommonServiceImpl implements CommonService{
 		stage.close();
 	}
 	//새창 열기
-	
-	
 	@Override
 	public void OpenWindow(Stage stage, String fxmlname, String title) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlname));
+		loader = new FXMLLoader(getClass().getResource(fxmlname));
 		form = null;
 		try {
 			form = loader.load();
@@ -57,35 +54,10 @@ public class CommonServiceImpl implements CommonService{
 		
 		stage.show();
 	}
-	
-	@Override
-	public FXMLLoader OpenReviewPage(Stage stage, String fxmlname, String title) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlname));
-		form = null;
-		try {
-			form = loader.load();
-			
-			stage.setTitle(title);
-			stage.setScene(new Scene(form));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			
-		}
-		
-		ctrler = loader.getController();
-		ctrler.setRoot(form);
-		
-		
-		stage.show();
-		
-		return loader;
-	}
-	
 	//OpenWindow와 달리 루트값을 반환하는 메소드(단, stage설정 없음)
 	@Override
 	public Parent ListForm(String fxmlname, boolean isCtr) {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlname));
+		loader = new FXMLLoader(getClass().getResource(fxmlname));
 		form = null;
 		try {
 			form = loader.load();
@@ -101,6 +73,11 @@ public class CommonServiceImpl implements CommonService{
 		}
 		
 		return form;
+	}
+	//FXMLLoader의 객체가져오기
+	@Override
+	public FXMLLoader getLoaderListForm() {
+		return loader;
 	}
 	//라벨입력
 	@Override

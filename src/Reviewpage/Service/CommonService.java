@@ -10,11 +10,9 @@ public interface CommonService {
 	public void CloseWindow(ActionEvent e);
 	public void OpenWindow(Stage stage, String fxmlname, String title);
 	public Parent ListForm(String fxmlname, boolean isCtr);
+	public FXMLLoader getLoaderListForm();
 	public void ShowLabel(Parent form, String fxId, String labeltxt);
 	public String getLabel(Parent form, String fxId);
 	public boolean CheckMsgbox(String contents);
 	public void Msgbox(String text);
-	public FXMLLoader OpenReviewPage(Stage stage, String fxmlname, String title);
-	
-	//public FXMLLoader OpenReviewPage(Stage stage, String fxmlname, String title);
 }

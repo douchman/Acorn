@@ -14,18 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
 
-
-
-/*
- * 
- * 
- *  리뷰 수정을 위한 컨트롤러
- *  EditReview.fxml 에서 로드됨
- * 
- * 
- * 
- * 
- * */
+//EditReview.fxml에 대한 컨트롤러
 public class EditReviewController extends Controller implements Initializable{
 	final String SHOPID = "1";
 	final String USERID = "aa1@mail.com";
@@ -33,14 +22,12 @@ public class EditReviewController extends Controller implements Initializable{
 	Stage stage;
 	CommonService comserv;
 	WriterService writerserv;
-	//StartPageController starctr;
 	ToggleButton TBtn;
 	List<ToggleButton> lstTBtn;
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		comserv = new CommonServiceImpl();
 		writerserv = new WriterServiceImpl();
-		//starctr = new StartPageController();
 	}
 
 	@Override
@@ -61,7 +48,4 @@ public class EditReviewController extends Controller implements Initializable{
 		writerserv.EditBtnServ(root);
 		comserv.CloseWindow(e);
 	}
-
-	
-
 }
