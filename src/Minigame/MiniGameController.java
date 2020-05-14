@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import MainMenu.MainPage.MainPageController;
 import Minigame.Roulette.RouletteMenuController;
+import Minigame.Service.MinigameCommonServiceImpl;
 import Minigame.Service.MinigameService;
 import Minigame.ServiceImpl.MinigameCommonService;
 import Minigame.ServiceImpl.MinigameServiceImpl;
@@ -33,7 +34,7 @@ public class MiniGameController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		gameServcie = new MinigameService();		
+		commonService = new MinigameCommonServiceImpl();	
 	}
 	
 	public void RouletteBtnPressed(ActionEvent event) throws IOException {
