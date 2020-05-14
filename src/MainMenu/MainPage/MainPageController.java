@@ -51,8 +51,13 @@ public class MainPageController extends Controller implements Initializable{
 
 	
 	public void setUsrID(String usrID) {
+		if(usrID==null) usrID="guest";
 		this.usrID = usrID;
 		topservice.setLoginBtn(usrID, root);
+	}
+	
+	public String getUsrID() {
+		return usrID;
 	}
 	
 	//TopPane

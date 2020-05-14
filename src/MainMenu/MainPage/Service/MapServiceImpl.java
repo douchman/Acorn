@@ -1,13 +1,18 @@
 package MainMenu.MainPage.Service;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import MainMenu.MainPage.Restaurant;
 import MainMenu.MainPage.Data.RestaurantDataManage;
 import MainMenu.MainPage.Data.RestaurantDataManageImpl;
+import Reviewpage.Review.ReviewListController;
+import Reviewpage.Review.ReviewPageController;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -16,6 +21,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 
 public class MapServiceImpl implements MapService {
@@ -113,7 +119,8 @@ public class MapServiceImpl implements MapService {
 		
 		sp.setOnMouseClicked(e -> {
 			ListView<HBox> lv = (ListView<HBox>)root.lookup("#CListView");
-			System.out.println(lv.getSelectionModel().selectedItemProperty().get().getUserData());
+			int rid = Integer.parseInt(lv.getSelectionModel().selectedItemProperty().get().getUserData().toString());
+			OpenReviewpage(rid);
 		});
 	
 	}
@@ -129,7 +136,8 @@ public class MapServiceImpl implements MapService {
 		
 		sp.setOnMouseClicked(e -> {
 			ListView<HBox> lv = (ListView<HBox>)root.lookup("#CListView");
-			System.out.println(lv.getSelectionModel().selectedItemProperty().get().getUserData());
+			int rid = Integer.parseInt(lv.getSelectionModel().selectedItemProperty().get().getUserData().toString());
+			OpenReviewpage(rid);
 		});
 		
 		} catch (Exception e2) {
@@ -148,7 +156,8 @@ public class MapServiceImpl implements MapService {
 		
 		sp.setOnMouseClicked(e -> {
 			ListView<HBox> lv = (ListView<HBox>)root.lookup("#CListView");
-			System.out.println(lv.getSelectionModel().selectedItemProperty().get().getUserData());
+			int rid = Integer.parseInt(lv.getSelectionModel().selectedItemProperty().get().getUserData().toString());
+			OpenReviewpage(rid);
 		});
 		
 
@@ -202,5 +211,27 @@ public class MapServiceImpl implements MapService {
 		ap.getChildren().removeIf(StackPane.class::isInstance);
 		ap.getChildren().removeIf(Circle.class::isInstance);
 	}
+	
+	private void OpenReviewpage(int rid) {
+	      FXMLLoader loader  = new FXMLLoader(getClass().getResource("/ReviewPage/Review/ReviewPage.fxml"));
+	      Parent root = null;
+	      try {
+	         root = loader.load();
+	      } catch (IOException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	      ReviewPageController reviewCon = loader.getController();
+	      reviewCon.setRoot(root);
+	      reviewCon.setId(rid, "ahn@acorn.com");
+	      ReviewListController rlc = new ReviewListController();
+	   
+	      
+	      Stage stage = new Stage();
+	      stage.setScene(new Scene(root));
+	      stage.show();
+	      
+	      reviewCon.Reviewstart();
+	   }
 
 }
