@@ -39,7 +39,7 @@ public class Ladder {
 	// #startField   #endField
 	public Ladder() {
 		idx = 0;
-		main = new FXMLLoader(getClass().getResource("../FXML/ladder.fxml"));
+		main = new FXMLLoader(getClass().getResource("../FXML/ladder3.fxml"));
 		result = new FXMLLoader(getClass().getResource("../FXML/ladderResult.fxml"));
 		compo = new Component();
 		
