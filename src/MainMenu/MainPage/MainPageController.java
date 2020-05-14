@@ -28,6 +28,11 @@ public class MainPageController extends Controller implements Initializable{
 	private MapService mapservice;
 	private MinigameServiceImpl gameservice;
 
+	
+	//박상현 수정 
+	private String usrID; 
+	// 로그인 서비스에서 로그인 성공시 저장될 유저 아이디
+	
 	@Override
 	public void setRoot(Parent root) {
 		this.root = root;
@@ -44,12 +49,20 @@ public class MainPageController extends Controller implements Initializable{
 		gameservice = new MinigameService();
 	}
 
+	
+	public void setUsrID(String usrID) {
+		this.usrID = usrID;
+		topservice.setLoginBtn(usrID, root);
+	}
+	
 	//TopPane
 	public void gotoFirstPage(MouseEvent e) {
 		Stage stage = new Stage();
 		service.showWindow(stage, "../FirstPage.fxml", "../FirstPage.css");
 		topservice.WindowClose(e);
 	}
+	
+	
 	
 	public void Tsearch(ActionEvent ae){
 		sideservice.clear(root);
@@ -59,6 +72,13 @@ public class MainPageController extends Controller implements Initializable{
 		mapservice.creatpin(root,txt);
 	}
 	
+	public void Tsearch(String str){
+		// 돌림판에서 결과처리를 위해 추가한 검색 메서드
+		sideservice.clear(root);
+		mapservice.clear(root);
+		sideservice.RandomList(root,str);
+		mapservice.creatpin(root,str);
+	}
 	
 	public void review(MouseEvent e) {
 		topservice.wReview(root);
@@ -67,6 +87,9 @@ public class MainPageController extends Controller implements Initializable{
 	public void login(ActionEvent e) {
 		Stage mstage = new Stage();
 		service.showWindow(mstage, "../../Login/login.fxml", "../../Login/login.css");
+		Stage currentStage = (Stage)root.getScene().getWindow();
+		currentStage.close();
+		// 현재 열린 창 닫기 *임시
 	}
 	
 	public void memInfo() {

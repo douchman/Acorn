@@ -1,5 +1,6 @@
 package MainMenu.Login;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,9 +9,12 @@ import MainMenu.FirstPage.Service.FirstPageService;
 import MainMenu.FirstPage.Service.FirstPageServiceImpl;
 import MainMenu.Login.Service.LoginService;
 import MainMenu.Login.Service.LoginServiceImpl;
+import MainMenu.MainPage.MainPageController;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class LoginController extends Controller implements Initializable {
@@ -36,8 +40,35 @@ public class LoginController extends Controller implements Initializable {
 	}
 
 	public void LoginBtnPressed(ActionEvent e) {
-		loginServ.LoginProc(root);
-		service.WindowClose(e);
+		// 수정
+		String usrID = loginServ.LoginProc(root);
+		if (usrID!=null){
+			Stage mainStage = new Stage();
+			Parent mainPageRoot;
+			Scene sc;
+			//service.showWindow(mainStage, "../../MainPage/MainPage.fxml", "../../MainPage/MainPage.css");
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../MainPage/MainPage.fxml"));
+			
+			// 로그인 성공시 메인페이지 오픈
+			try {
+				mainPageRoot = loader.load();
+				MainPageController mainCon = loader.getController();
+				mainCon.setRoot(mainPageRoot);
+				mainCon.setUsrID(usrID);
+				sc = new Scene(mainPageRoot);
+				sc.getStylesheets().add(getClass().getResource("../MainPage/MainPage.css").toString());
+				mainStage.setScene(sc);
+				mainStage.show();
+				
+				// 현재 창 닫기
+				Stage stg = (Stage)root.getScene().getWindow();
+				stg.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 	}
 	public void setTextProperty() {
 		loginServ.setTextFieldProperty(root);

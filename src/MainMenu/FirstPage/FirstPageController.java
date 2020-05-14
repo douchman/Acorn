@@ -35,6 +35,9 @@ public class FirstPageController extends Controller implements Initializable {
 	public void login() {
 		Stage mstage = new Stage();
 		service.showWindow(mstage, "../../Login/login.fxml", "../../Login/login.css");
+		// 일단은 그냥 닫는다
+		Stage stg = (Stage)root.getScene().getWindow();
+		stg.close();
 	}
 	
 }

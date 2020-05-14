@@ -32,6 +32,10 @@ public class FirstPageServiceImpl implements FirstPageService {
 
 	@Override
 	public Parent showWindow(Stage s, String formPath, String css) {
+		// 메인페이지 불러오는 메서드
+		// 로그인페이지 불러오는 메서드
+		// 메인페이지에서 뒤로 가기 했을때 새로 창을 만들어주는 메서드
+		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(formPath));
 		Parent root = null;
 		try {

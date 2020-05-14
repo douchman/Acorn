@@ -4,6 +4,7 @@ package MainMenu.MainPage.Service;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -30,6 +31,17 @@ public class TopFieldServiceImpl implements TopFieldService {
 		return Stxt;
 	}
 
+	
+	@Override
+	public void setLoginBtn(String str, Parent root) {
+		// 임시메서드 정의
+		Button btnLogin = (Button)root.lookup("#TloginBtn");
+		btnLogin.setText(str);
+		btnLogin.setPrefWidth(200);
+		btnLogin.setDisable(true);
+		
+	}
+	
 	@Override
 	public void wReview(Parent root) {
 		int rid=0;

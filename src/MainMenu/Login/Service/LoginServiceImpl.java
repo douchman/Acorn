@@ -63,8 +63,8 @@ public class LoginServiceImpl implements LoginService{
 	}
 	
 	@Override
-	public void LoginProc(Parent root) {
-		
+	public String LoginProc(Parent root) {
+		// 로그인 프락을 void -> String 으로 변경
 		TextField idField = (TextField)root.lookup("#emailTxtF");
 		TextField pwField = (TextField)root.lookup("#pwField");
 		
@@ -93,7 +93,9 @@ public class LoginServiceImpl implements LoginService{
 			if(userPW.equals(pwField.getText())){
 				// DB로부터 가져온 pw를 사용자가 입력한 pw와 같은지 확인
 				commonServ.ErrorMsg("로그인 성공", "어서오세요"+idField.getText()+"님");
-				
+				// 여기서 메인페이지로 넘어가야한다.
+				// 로그인 성공시 리턴으로 해당 아이디 넘김
+				return idField.getText();
 			}
 			
 			else {
@@ -105,12 +107,12 @@ public class LoginServiceImpl implements LoginService{
 		}
 		
 		
-		
+		return null;
 		
 	}
 	
 	@Override
-public void AdminLogin(Parent root) {
+	public void AdminLogin(Parent root) {
 		
 	   String adminQuery = "SELECT pw,admin_set  "+
 				"FROM member "+
