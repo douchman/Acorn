@@ -9,6 +9,7 @@ import java.util.Map;
 import MainMenu.MainPage.MainPageController;
 import Minigame.Component;
 import Minigame.Service.MinigameComponentImpl;
+import Minigame.ServiceImpl.MinigameComponent;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -35,7 +36,7 @@ public abstract class Roulette {
 	private Button btnFunc, btnChngMod,btnRotate,btnStop;
 	//private Component compo;
 	private MainPageController mainCon;
-	private MainPageController mainCon;
+	private MinigameComponent componentServ;
 	//private List<String> listContents = new ArrayList<String>();
 	private List<String> listContents;
 	//private List<Arc> listrouletteContents = new ArrayList<Arc>();
