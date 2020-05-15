@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Minigame.Component;
+import Minigame.Service.MinigameComponentImpl;
+import Minigame.ServiceImpl.MinigameComponent;
 import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -20,10 +22,11 @@ public class LadderThread extends Thread{
 	private Button startBtn;
 	private List<Line> listLine;
 	private List<LadderLabel> listEndLabel;
-	private Component compo;
+	//private Component compo;
 	private int processY;
 	private int processX;
 	private Parent root;
+	private MinigameComponent componentServ;
 	
 	public LadderThread(LadderBtn btn,LadderLabel lbl, LadderLine line, 
 			AnchorPane ladderField, Parent root, List<LadderLabel> listEndLabel) {
@@ -36,7 +39,8 @@ public class LadderThread extends Thread{
 		this.processY = btn.getCenterY();
 		this.processX = line.DotX;
 		listLine = new ArrayList<Line>();
-		compo = new Component();	
+		//compo = new Component();	
+		componentServ = new MinigameComponentImpl();
 		ENDVALUE = lbl.getCneterY();
 		//resultStage = new Stage();
 		//resultStage.setScene(new Scene(root));
@@ -45,7 +49,7 @@ public class LadderThread extends Thread{
 	Runnable move = new Runnable() {
 		@Override
 		public void run() {
-			Line line = compo.getThreadLine(processX, processY, processX, processY);
+			Line line = componentServ.getThreadLine(processX, processY, processX, processY);
 
 			/*
 			ladderField.getChildren().add(

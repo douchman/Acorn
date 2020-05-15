@@ -101,6 +101,10 @@ public class LoginServiceImpl implements LoginService{
 			else {
 				commonServ.ErrorMsg("로그인 실패", "비밀번호가 불일치");
 			}
+			
+			conn.close();
+			psmt.close();
+			
 		} catch (SQLException e) {
 			//System.out.println("일치하는 아이디가 없습니다.");
 			commonServ.ErrorMsg("로그인실패", "일치하는 아이디가 없습니다.");

@@ -8,6 +8,7 @@ import java.util.Map;
 
 import MainMenu.MainPage.MainPageController;
 import Minigame.Component;
+import Minigame.Service.MinigameComponentImpl;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -32,7 +33,8 @@ public abstract class Roulette {
 	private Parent root;
 	private Stage stage;
 	private Button btnFunc, btnChngMod,btnRotate,btnStop;
-	private Component compo;
+	//private Component compo;
+	private MainPageController mainCon;
 	private MainPageController mainCon;
 	//private List<String> listContents = new ArrayList<String>();
 	private List<String> listContents;
@@ -53,7 +55,8 @@ public abstract class Roulette {
 	public Roulette(RouletteMenuController rouletteMenuCon, MainPageController mainCon) {
 		this.rouletteMenuCon = rouletteMenuCon;
 		this.mainCon = mainCon;
-		compo = new Component();
+		//compo = new Component();
+		componentServ = new MinigameComponentImpl();
 		loader = new FXMLLoader(getClass().
 				getResource("../FXML/roulette2.fxml"));
 		
@@ -175,7 +178,7 @@ public abstract class Roulette {
 		pane.getChildren().clear();
 		listrouletteContents2.clear();
 		//pane.getChildren().removeAll();
-		pin = compo.getArc(200, 40, 20, 20, 75, 30, Color.BLACK);
+		pin = componentServ.getArc(200, 40, 20, 20, 75, 30, Color.BLACK);
 		double startAngle =0;
 		double angleSize = (double)(360 / listContents.size());
 		double angle = (((angleSize/2)+startAngle) * ((Math.PI)/180));
@@ -198,7 +201,7 @@ public abstract class Roulette {
 			
 			angle = (((angleSize/2)+startAngle) * ((Math.PI)/180));
 			//System.out.println("angle : "+angle);
-			gr.getChildren().add(compo.getArcLabel(listContents.get(i),(Math.cos(angle)*170/2)+185, 
+			gr.getChildren().add(componentServ.getArcLabel(listContents.get(i),(Math.cos(angle)*170/2)+185, 
 					(Math.sin(angle)*170/2)+190, lblRotateValue));
 			listrouletteContents2.get(i).setArea((Math.cos(angle)*170/2)+185, (Math.sin(angle)*170/2)+190);
 			startAngle += angleSize;
@@ -217,7 +220,7 @@ public abstract class Roulette {
 		//System.out.println(ratio);
 		
 		for(int i=0;i<listContents.size();i++) {		
-			ratioField.getChildren().add(compo.getLabel(listContents.get(i)+ratio+"%", listColor[i]));
+			ratioField.getChildren().add(componentServ.getLabel(listContents.get(i)+ratio+"%", listColor[i]));
 			}
 	}
 	

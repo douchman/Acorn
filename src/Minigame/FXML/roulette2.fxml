@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="564.0" prefWidth="638.0" spacing="30.0" xmlns="http://javafx.com/javafx/8" 
+<HBox minWidth="-Infinity" prefHeight="564.0" prefWidth="638.0" spacing="30.0" xmlns="http://javafx.com/javafx/8" 
 xmlns:fx="http://javafx.com/fxml/1"
 fx:controller="Minigame.Roulette.RouletteController"
 >

@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Random;
 
 import Minigame.Component;
+import Minigame.Service.MinigameComponentImpl;
+import Minigame.ServiceImpl.MinigameComponent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,7 +22,7 @@ public class Ladder {
 	private final static int MAX_NODE_CNT = 5;
 	private int idx;
 	private FXMLLoader main, result;
-	private Component compo;
+	//private Component compo;
 	private Parent rootLadder, rootResult;
 	private Stage ladderStage, resultPage;
 	private AnchorPane ladderField;
@@ -34,15 +36,15 @@ public class Ladder {
 	private List<Integer> listRoot = new ArrayList<Integer>();
 	private List<Integer> listDotCnt = new ArrayList<Integer>();
 	private Random rand = new Random();
-	
+	private MinigameComponent componentServ;
 	private int fieldCnt=0;
 	// #startField   #endField
 	public Ladder() {
 		idx = 0;
 		main = new FXMLLoader(getClass().getResource("../FXML/ladder3.fxml"));
 		result = new FXMLLoader(getClass().getResource("../FXML/ladderResult.fxml"));
-		compo = new Component();
-		
+		//compo = new Component();
+		componentServ = new MinigameComponentImpl();
 		listStartNode = new ArrayList<TextField>();
 		listEndNode = new ArrayList<TextField>();
 		
@@ -131,8 +133,8 @@ public class Ladder {
 		if(fieldCnt >=2) {
 			btnMakeladder.setDisable(false);
 		}
-		listStartNode.add(compo.getLadderTxtField(LadderFieldLayoutX, 0.0));
-		listEndNode.add(compo.getLadderTxtField(LadderFieldLayoutX, 545.0));
+		listStartNode.add(componentServ.getLadderTxtField(LadderFieldLayoutX, 0.0));
+		listEndNode.add(componentServ.getLadderTxtField(LadderFieldLayoutX, 545.0));
 		
 		ladderField.getChildren().add(listStartNode.get(idx));
 		//startNode.get(idx).setLayoutX(LadderFieldLayoutX);
@@ -208,7 +210,7 @@ public class Ladder {
 					// 해당 도트에 루트가 연결이 되어있지 않을경우
 					// 즉 flag 값이 false 일 경우 그린다.
 					
-					Line line =compo.getLine(
+					Line line =componentServ.getLine(
 							dotList.get(j).X, 
 							dotList.get(j).Y, 
 							LinkeddotList.get(j).X, 
