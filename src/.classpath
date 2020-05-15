@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry excluding="Reviewpage/Review/TemporayMain.java" kind="src" path=""/>
+	<classpathentry excluding="Reviewpage/Review/TemporayMain.java|Minigame/Roulette/RouletteMenu.java|Minigame/Service/RouletteService.java|Minigame/tmpMain.java" kind="src" path=""/>
 	<classpathentry kind="output" path=""/>
 </classpath>

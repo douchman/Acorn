@@ -36,11 +36,17 @@ public class MainPageController extends Controller implements Initializable{
 	public void setUsrID(String usrID) {
 		if(usrID==null) usrID="guest";
 		this.usrID = usrID;
+		//세근 수정
+	    sideservice.setUsrID(usrID);
+	    
 		topservice.setLoginBtn(usrID, root);
 	}
 	@Override
 	public void setRoot(Parent root) {
 		this.root = root;
+		//세근 수정
+	    sideservice.setUsrID(usrID);
+	    
 		sideservice.RandomList(root, usrID);
 		mapservice.creatpin(root, usrID);
 	}
@@ -68,6 +74,9 @@ public class MainPageController extends Controller implements Initializable{
 		sideservice.clear(root);
 		mapservice.clear(root);
 		String txt = topservice.Tsearch(ae);
+		//세근 수정
+	    sideservice.setUsrID(usrID);
+	    
 		sideservice.RandomList(root,txt,usrID);
 		mapservice.creatpin(root,txt,usrID);
 	}
@@ -76,6 +85,9 @@ public class MainPageController extends Controller implements Initializable{
 		// 돌림판에서 결과처리를 위해 추가한 검색 메서드
 		sideservice.clear(root);
 		mapservice.clear(root);
+		//세근 수정
+	    sideservice.setUsrID(usrID);
+	    
 		sideservice.RandomList(root,str,usrID);
 		mapservice.creatpin(root,str,usrID);
 	}
@@ -107,6 +119,9 @@ public class MainPageController extends Controller implements Initializable{
 		int m = 8;
 		sideservice.clear(root);
 		mapservice.clear(root);
+		//세근 수정
+	    sideservice.setUsrID(usrID);
+	    
 		sideservice.RandomList(root,m,usrID);
 		mapservice.creatpin(root,m,usrID);
 	}
@@ -115,6 +130,9 @@ public class MainPageController extends Controller implements Initializable{
 		int m = 0;
 		sideservice.clear(root);
 		mapservice.clear(root);
+		//세근 수정
+	    sideservice.setUsrID(usrID);
+	    
 		sideservice.RandomList(root,m,usrID);
 		mapservice.creatpin(root,m,usrID);
 	}
@@ -122,6 +140,9 @@ public class MainPageController extends Controller implements Initializable{
 	public void allm(MouseEvent e) {
 		sideservice.clear(root);
 		mapservice.clear(root);
+		//세근 수정
+	    sideservice.setUsrID(usrID);
+	    
 		sideservice.RandomList(root,usrID);
 		mapservice.creatpin(root,usrID);
 	}
@@ -130,6 +151,9 @@ public class MainPageController extends Controller implements Initializable{
 		int m = 1;
 		sideservice.clear(root);
 		mapservice.clear(root);
+		//세근 수정
+	    sideservice.setUsrID(usrID);
+	    
 		sideservice.RandomList(root,m,usrID);
 		mapservice.creatpin(root,m,usrID);
 	}
@@ -138,6 +162,9 @@ public class MainPageController extends Controller implements Initializable{
 		int m = 2;
 		sideservice.clear(root);
 		mapservice.clear(root);
+		//세근 수정
+	    sideservice.setUsrID(usrID);
+	    
 		sideservice.RandomList(root,m,usrID);
 		mapservice.creatpin(root,m,usrID);
 	}
@@ -146,6 +173,9 @@ public class MainPageController extends Controller implements Initializable{
 		int m = 3;
 		sideservice.clear(root);
 		mapservice.clear(root);
+		//세근 수정
+	    sideservice.setUsrID(usrID);
+	    
 		sideservice.RandomList(root,m,usrID);
 		mapservice.creatpin(root,m,usrID);
 	}
@@ -154,6 +184,9 @@ public class MainPageController extends Controller implements Initializable{
 		int m = 4;
 		sideservice.clear(root);
 		mapservice.clear(root);
+		//세근 수정
+	    sideservice.setUsrID(usrID);
+	    
 		sideservice.RandomList(root,m,usrID);
 		mapservice.creatpin(root,m,usrID);
 	}
@@ -162,6 +195,9 @@ public class MainPageController extends Controller implements Initializable{
 		int m = 5;
 		sideservice.clear(root);
 		mapservice.clear(root);
+		//세근 수정
+	    sideservice.setUsrID(usrID);
+	    
 		sideservice.RandomList(root,m,usrID);
 		mapservice.creatpin(root,m,usrID);
 	}
@@ -170,6 +206,9 @@ public class MainPageController extends Controller implements Initializable{
 		int m = 7;
 		sideservice.clear(root);
 		mapservice.clear(root);
+		//세근 수정
+	    sideservice.setUsrID(usrID);
+	    
 		sideservice.RandomList(root,m,usrID);
 		mapservice.creatpin(root,m,usrID);
 	}
@@ -178,6 +217,9 @@ public class MainPageController extends Controller implements Initializable{
 		int m = 6;
 		sideservice.clear(root);
 		mapservice.clear(root);
+		//세근 수정
+	    sideservice.setUsrID(usrID);
+	    
 		sideservice.RandomList(root,m,usrID);
 		mapservice.creatpin(root,m,usrID);
 	}

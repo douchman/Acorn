@@ -30,18 +30,24 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 public class SideMenuServiceImpl implements SideMenuService{	
-   
+	//세근 수정
+	private String userId;
+	
 	Container ctn;
 	MapServiceImpl mapservice;
 	FirstPageService fservice;
-
+	ReviewPageController reviewCon;
 	
 	public SideMenuServiceImpl() {
 		ctn = new Container();
 		mapservice = new MapServiceImpl();
 		fservice=new FirstPageServiceImpl();
 	}
-
+	//세근 수정
+	public void setUsrID(String usrId) {
+		this.userId = usrId;
+	}
+		
 	@Override
 	public void RandomList(Parent root, String usrID) {
 		RestaurantDataManage restaurantData = new RestaurantDataManageImpl();
@@ -316,10 +322,14 @@ public class SideMenuServiceImpl implements SideMenuService{
 	         // TODO Auto-generated catch block
 	         e.printStackTrace();
 	      }
-	      ReviewPageController reviewCon = loader.getController();
+	      reviewCon = loader.getController();
 	      reviewCon.setRoot(root);
-	      System.out.println(usrID);
-	      reviewCon.setId(rid, usrID);
+	      //System.out.println(usrID);
+	      System.out.println("userID : " + userId);
+	      System.out.println("shopID : " + rid);
+	      if(userId == null)
+	    	  userId = "guest";
+	      reviewCon.setId(rid, userId);
 
 	   
 	      

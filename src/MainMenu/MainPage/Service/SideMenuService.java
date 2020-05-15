@@ -4,6 +4,9 @@ import javafx.scene.Parent;
 
 public interface SideMenuService {
 	
+	//세근 수정
+	public void setUsrID(String usrId);
+	
 	public void RandomList(Parent root, String usrID);
 	public void RandomList(Parent root, int m, String usrID);
 	public void RandomList(Parent root, String txt, String usrID);
