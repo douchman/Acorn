@@ -13,12 +13,12 @@ fx:controller="Minigame.Roulette.RouletteMenuController"
    <center>
       <VBox alignment="CENTER" prefHeight="171.0" prefWidth="210.0" spacing="50.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnCustom" mnemonicParsing="false" text="커스텀 모드">
+            <Button fx:id="btnCustom" onAction="#RunCustomRoulette" mnemonicParsing="false" text="커스텀 모드">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btnRank" mnemonicParsing="false" text="랭킹 모드">
+            <Button fx:id="btnRank" onAction="#RunRankRoulette" mnemonicParsing="false" text="랭킹 모드">
                <font>
                   <Font size="15.0" />
                </font>
