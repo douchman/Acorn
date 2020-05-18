@@ -6,7 +6,6 @@ import java.util.Map;
 import Reviewpage.Review.ReviewListController;
 import Reviewpage.Review.ReviewPageController;
 import Reviewpage.Review.WriteReviewController;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -18,6 +17,8 @@ import javafx.stage.Stage;
 public class TabServiceImpl implements TabService{
 	MyDBService dbserv;
 	CommonService comserv;
+	ReviewListController rvlistCtrl;
+	WriteReviewController writeCtrl;
 	List<Parent> lstmenuPane;
 	
 	public TabServiceImpl(){
@@ -77,12 +78,12 @@ public class TabServiceImpl implements TabService{
 		revwlstvbox.getChildren().clear();
 		for(Integer i : Maprevw.keySet()) {
 			Parent revwlstform = comserv.ListForm("/Reviewpage/Review/ReviewList.fxml", true);
-			ReviewListController rvlistCtrl = comserv.getLoaderListForm().getController();
+			rvlistCtrl = comserv.getLoaderListForm().getController();
 			rvlistCtrl.setShopID(shopId);
 			rvlistCtrl.setUserID(userId);
 			rvlistCtrl.setReviewCtrler(reviewCon);
 			
-			String email = hideEmail(dbserv.selectDB(dbserv.EmailSQL(shopId), "substr(email, 1, instr(email,'@')-1)").get(i));
+			String email = hideEmail(dbserv.selectDB(dbserv.shopEmailSQL(shopId), "substr(email, 1, instr(email,'@')-1)").get(i));
 			comserv.ShowLabel(revwlstform, "#TabReviewWriter", dbserv.selectDB(dbserv.ReviewSQL(shopId), "name").get(i)+"("+email+")");
 			
 			String star = gradeStar((int)Float.parseFloat(dbserv.selectDB(dbserv.ReviewSQL(shopId), "grade").get(i)));
@@ -101,7 +102,7 @@ public class TabServiceImpl implements TabService{
 			if(admin == null)
 				admin = "null";
 			if(Maprevw.get(i).equals(userId) || admin.equals("1")) {	
-				//editBtn(revwlstform, "#TabReviewEditBtn");	//수정 버튼
+				editBtn(revwlstform, "#TabReviewEditBtn");	//수정 버튼
 				editBtn(revwlstform, "#TabReviewDeleteBtn");	//삭제 버튼
 			}
 			revwlstvbox.getChildren().add(revwlstform);
@@ -114,15 +115,14 @@ public class TabServiceImpl implements TabService{
 		
 		stage = new Stage();
 		comserv.OpenWindow(stage, "/Reviewpage/Review/WriteReview.fxml", "Write Review");
-		FXMLLoader loader = comserv.getLoaderListForm();
 		form = comserv.getRoot();
-		WriteReviewController writeCtrl = loader.getController();
+		writeCtrl = comserv.getLoaderListForm().getController();
 		writeCtrl.setShopID(shopId);
 		writeCtrl.setUserID(userId);
 		writeCtrl.setReviewCtrler(rvCon);
 		
 		Label lbl = (Label)form.lookup("#WriterNameLbl");
-		String email = dbserv.selectDB(dbserv.EmailSQL(shopId, userId), "substr(email, 1, instr(email,'@')-1)").get(0);
+		String email = dbserv.selectDB(dbserv.userEmailSQL(userId), "substr(email, 1, instr(email,'@')-1)").get(0);
 		lbl.setText(dbserv.selectDB(dbserv.WriteSQL(userId), "name").get(0)+"("+ email +")");
 	}
 	

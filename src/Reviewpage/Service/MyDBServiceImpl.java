@@ -80,24 +80,23 @@ public class MyDBServiceImpl implements MyDBService {
 	}
 	@Override
 	public String EditSQL(String reviewId) {
-		return "select review_id, email, name, substr(email, 1, instr(email,'@')-1), grade review, writeday\n" + 
+		return "select review_id, email, name, substr(email, 1, instr(email,'@')-1), grade, review, writeday, imgURL\n" + 
 				"from member as mem, reviewTable as rev\n" + 
 				"where mem.email = rev.user_email\n" + 
 				"and review_id = " + reviewId + ";";
 	}
 	@Override
-	public String EmailSQL(String shopId) {
+	public String shopEmailSQL(String shopId) {
 		return "select email, substr(email, 1, instr(email,'@')-1)\n" + 
 				"from member as mem, reviewTable as rev\n" + 
 				"where mem.email = rev.user_email\n" + 
 				"and shop_id = " + shopId + ";";
 	}
 	@Override
-	public String EmailSQL(String shopId, String userId) {
-		return "select email, substr(email, 1, instr(email,'@')-1)\n" + 
-				"from member as mem, reviewTable as rev\n" + 
-				"where mem.email = rev.user_email\n" + 
-				"and shop_id = " + shopId + " and user_email = '" + userId + "';";
+	public String userEmailSQL(String userId) {
+		return "select substr(email, 1, instr(email,'@')-1)\r\n" + 
+				"from member\r\n" + 
+				"where email = '" + userId + "';";
 	}
 	@Override
 	public String AdminSQL(String userId) {

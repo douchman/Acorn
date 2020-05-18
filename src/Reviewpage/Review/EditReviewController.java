@@ -16,12 +16,13 @@ import javafx.stage.Stage;
 
 //EditReview.fxml에 대한 컨트롤러
 public class EditReviewController extends Controller implements Initializable{
-	final String SHOPID = "1";
-	final String USERID = "aa1@mail.com";
+	private String reviewId;
 	private Parent root;
 	Stage stage;
 	CommonService comserv;
 	WriterService writerserv;
+	ReviewListController rvlistCtrl;
+	ReviewPageController rvpageCtrl;	//reflesh를 위한 소환
 	ToggleButton TBtn;
 	List<ToggleButton> lstTBtn;
 	@Override
@@ -34,6 +35,15 @@ public class EditReviewController extends Controller implements Initializable{
 	public void setRoot(Parent root) {
 		this.root = root;
 	}
+	public void setReviewCtrler(ReviewListController rvlistCtrl) {
+		this.rvlistCtrl = rvlistCtrl;
+	}
+	public void setReviewpageCtrl(ReviewPageController rvpageCtrl) {
+		this.rvpageCtrl = rvpageCtrl;
+	}
+	public void setReviewID(String reviewId) {
+		this.reviewId = reviewId;
+	}
 
 	//이미지 업로드 버튼
 	public void ImgUploadBtnProc() {
@@ -43,9 +53,10 @@ public class EditReviewController extends Controller implements Initializable{
 	public void CancelBtnProc(ActionEvent e) {
 		comserv.CloseWindow(e);
 	}
-	
+	//수정 버튼
 	public void EditBtnProc(ActionEvent e) {
-		writerserv.EditBtnServ(root);
+		writerserv.EditBtnServ(root, reviewId);
+		rvpageCtrl.refresh();
 		comserv.CloseWindow(e);
 	}
 }

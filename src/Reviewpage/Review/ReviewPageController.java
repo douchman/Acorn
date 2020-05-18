@@ -16,14 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Tab;
 import javafx.stage.Stage;
 
-
-/*
- * 
- * 리뷰페이지 전체에서 동작하는 요청을 처리하는 컨트롤러
- * 
- * 
- * 
- * */
+//리뷰페이지 전체에서 동작하는 요청을 처리하는 컨트롤러
 public class ReviewPageController extends Controller implements Initializable{
 	private String shopID, userID;
 	private Parent root;
@@ -120,5 +113,4 @@ public class ReviewPageController extends Controller implements Initializable{
 		tabserv.TabMenu(root, shopID);
 		tabserv.TabReview(root, shopID, userID, this);
 	}
-
 }

@@ -1,8 +1,13 @@
 package Reviewpage.Service;
 
+import Reviewpage.Review.EditReviewController;
+import Reviewpage.Review.ReviewListController;
+import Reviewpage.Review.ReviewPageController;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class ReviewListServiceImpl implements ReviewListService{
 	MyDBService dbserv;
@@ -38,13 +43,24 @@ public class ReviewListServiceImpl implements ReviewListService{
 	}
 	//리뷰수정 서비스(미완)
 	@Override
-	public void UpdateReviewServ(Parent form, String userId, String reviewId) {
+	public void UpdateReviewServ(Parent form, String shopId, String userId, String reviewId, ReviewListController rvlistCtrl, ReviewPageController rvpageCtrl) {
+		Stage stage = new Stage();
+		comserv.OpenWindow(stage, "/Reviewpage/Review/EditReview.fxml", "Edit Review");	//OpenWindow의 경로 필요
+		form = comserv.getRoot();
+		EditReviewController editCtrl = comserv.getLoaderListForm().getController();
+		editCtrl.setReviewID(reviewId);
+		editCtrl.setReviewpageCtrl(rvpageCtrl);
+		editCtrl.setReviewCtrler(rvlistCtrl);
+		
 		String email = dbserv.selectDB(dbserv.EditSQL(reviewId), "substr(email, 1, instr(email,'@')-1)").get(0);
 		comserv.ShowLabel(form, "#WriterNameLbl", dbserv.selectDB(dbserv.EditSQL(reviewId), "name").get(0)+"("+ email +")");
 		
 		Label starlbl = (Label)form.lookup("#WriteStarLbl");
 		int grade = (int)Float.parseFloat(dbserv.selectDB(dbserv.EditSQL(reviewId), "grade").get(0));
 		FixGradeStar(starlbl, grade);
+		TextArea textarea = (TextArea)form.lookup("#WriteContentsTA");
+		textarea.setText(dbserv.selectDB(dbserv.EditSQL(reviewId), "review").get(0));
+		comserv.ShowLabel(form, "#WriteReviewImgURLLbl", dbserv.selectDB(dbserv.EditSQL(reviewId), "imgURL").get(0));
 	}
 	
 }

@@ -77,7 +77,7 @@
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="image/editbtn.png" />
+                        <Image url="/Reviewpage/image/editbtn.png" />
                      </source>
                   </ImageInput>
                </effect>
@@ -86,7 +86,7 @@
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="image/cancelbtn.png" />
+                        <Image url="/Reviewpage/image/cancelbtn.png" />
                      </source>
                   </ImageInput>
                </effect>

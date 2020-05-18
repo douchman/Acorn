@@ -9,5 +9,5 @@ public interface WriterService {
 	public int getGrade(Parent form);
 	public void ImgUploadBtnServ(Stage stage, Parent form);
 	public void submitBtnServ(Parent form, String shopId, String userId);
-	public void EditBtnServ(Parent form);
+	public void EditBtnServ(Parent form, String reviewId);
 }

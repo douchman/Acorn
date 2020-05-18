@@ -89,11 +89,11 @@ public class WriterServiceImpl implements WriterService{
 	}
 	//리뷰 수정)수정 버튼 서비스(미완)
 	@Override
-	public void EditBtnServ(Parent form) {
+	public void EditBtnServ(Parent form, String reviewId) {
 		String text = getTA(form, "#WriteContentsTA");
 		String imgurl = comserv.getLabel(form, "#WriteReviewImgURLLbl");
 		if(imgurl.equals("사진없음")) 
 			imgurl = null;
-		//dbserv.EditReview(reviewId, text, imgurl);
+		dbserv.EditReview(reviewId, text, imgurl);
 	}
 }

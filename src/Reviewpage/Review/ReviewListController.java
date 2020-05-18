@@ -12,14 +12,12 @@ import Reviewpage.Service.TabServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.stage.Stage;
 
 //ReviewList.fxml에 대한 컨트롤러
 public class ReviewListController extends Controller implements Initializable{
 	private String shopId;
 	private String userId;
 	private Parent root;
-	Stage stage;
 	ReviewListService rvlistserv;
 	TabService tabserv;
 	CommonService comserv;
@@ -53,9 +51,10 @@ public class ReviewListController extends Controller implements Initializable{
 		if(comserv.CheckMsgbox("정말로 수정하겠습니까?") == false)
 			return;
 		String reviewId = rvlistserv.findReviewId(userId, rvlistserv.findWriteday(root));
-		stage = new Stage();
-		comserv.OpenWindow(stage, "/ReviewPackage/EditReview.fxml", "Edit Review");	//OpenWindow의 경로 필요
-		rvlistserv.UpdateReviewServ(comserv.getRoot(), userId, reviewId);
+		System.out.println("shopId : " + shopId);
+		System.out.println("userId : " + userId);
+		System.out.println("reviewId : " + reviewId);
+		rvlistserv.UpdateReviewServ(root, shopId, userId, reviewId, this, rvpageCtrl);
 	}
 	//리뷰 리스트 중 삭제 버튼
 	public void DeleteReviewProc(ActionEvent e) {
