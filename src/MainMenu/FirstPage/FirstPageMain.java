@@ -4,11 +4,16 @@ import MainMenu.FirstPage.Service.FirstPageService;
 import MainMenu.FirstPage.Service.FirstPageServiceImpl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class FirstPageMain extends Application {
 
+	private FXMLLoader loader;
+	private Scene sc;
+	private Parent root;
+	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// 박상현 수정
