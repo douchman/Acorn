@@ -221,7 +221,8 @@ public abstract class Roulette {
 		//System.out.println(ratio);
 		
 		for(int i=0;i<listContents.size();i++) {		
-			ratioField.getChildren().add(componentServ.getLabel(listContents.get(i)+" : "+String.format(Double.toString(ratio), "%.2f")+"%", listColor[i]));
+			ratioField.getChildren().add(componentServ.getLabel(listContents.get(i)+" : "+
+					String.format("%.2f",ratio)+"%", listColor[i]));
 			}
 	}
 	
