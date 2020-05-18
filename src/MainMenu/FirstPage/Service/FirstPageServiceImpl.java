@@ -31,7 +31,7 @@ public class FirstPageServiceImpl implements FirstPageService {
 		return root;
 	}
 	@Override
-	public Parent showWindow2(Stage s, String formPath) {
+	public Parent showAdminPage(Stage s, String formPath) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(formPath));
 		Parent root = null;
 		try {
