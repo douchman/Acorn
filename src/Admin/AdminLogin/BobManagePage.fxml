@@ -27,7 +27,7 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button fx:id="DelBobBtn" mnemonicParsing="false" text="식당 삭제" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Button fx:id="DelBobBtn" mnemonicParsing="false"  text="식당 삭제" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font size="18.0" />
          </font>

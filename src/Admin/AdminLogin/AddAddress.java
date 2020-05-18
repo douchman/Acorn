@@ -30,7 +30,6 @@ public class AddAddress {
 		return address;
 	}
 	public void setAddress(String address) {
-		//wef
 		this.address = address;
 	}
 }

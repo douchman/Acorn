@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import Admin.AdminLogin.AddAddress;
-import Admin.AdminLogin.Member;
+import Admin.AdminLogin.RestMember;
 
 
 
@@ -27,10 +27,10 @@ public class BobMembershipManageImpl implements IBobMembershipManage {
 		}
 	}
 	@Override
-	public boolean BobMembershipProc(Member member) {
+	public boolean BobMembershipProc(RestMember member) {
 		String sql = 	"INSERT INTO restaurant "+
-				"(name, name_id, category_id, price, businesshour, breaktime, image) "+
-				"VALUES (?,?,?,?,?,?,?)";
+					"(name, name_id, category_id, price, businesshour, breaktime, image) "+
+					"VALUES (?,?,?,?,?,?,?)";
 		
 		try {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -57,9 +57,9 @@ public class BobMembershipManageImpl implements IBobMembershipManage {
 	}
 
 	@Override
-	public int DelProc(String BobNum) {
-		String sql = 	"delete from Bob "+
-						"WHERE BobNum=?";
+	public int DelProc(RestMember member) {
+		String sql = 	"delete from restaurant "+
+						"WHERE name_id=?";
 		return 0;
 		
 	}
@@ -89,4 +89,6 @@ public class BobMembershipManageImpl implements IBobMembershipManage {
 	}
 	return true;
 	}
+	
+
 }

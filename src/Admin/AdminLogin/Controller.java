@@ -54,7 +54,13 @@ public class Controller extends Controller2 implements Initializable{
             lblStatus.setText("Admin Login Failed");
         }
     }
-
+    public void BobManageBtn(ActionEvent event) throws Exception {
+        Stage primaryStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("BobManagePage.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+        }
 	/*
 	 * public void BobManageBtn(ActionEvent event) throws Exception { Stage
 	 * primaryStage = new Stage(); FXMLLoader loader = new
@@ -65,20 +71,14 @@ public class Controller extends Controller2 implements Initializable{
 	 * Scene scene = new Scene(root); primaryStage.setScene(scene);
 	 * primaryStage.show(); }
 	 */
-    public void BobManageBtn(ActionEvent event) throws Exception {
-        Stage primaryStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("BobManagePage.fxml"));
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        }
+    
     public void AddBob(ActionEvent event) throws Exception{
     	FXMLLoader loader = new FXMLLoader(getClass().getResource("AddBobPage.fxml"));
     	Parent root = loader.load();
     	Stage primaryStage = new Stage();
         //Parent root = FXMLLoader.load(getClass().getResource("AddBobPage.fxml"));
     	MembershipController memCon = loader.getController();
-    	//memCon.setRoot(root);
+    	memCon.setRoot(root);
     	memCon.setRoot(root);
         Scene scene = new Scene(root);
         

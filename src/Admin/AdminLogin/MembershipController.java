@@ -13,16 +13,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 
-public class MembershipController extends Controller implements Initializable{
-	final int NUM = 0;
-	final int NAME = 1;
-	final int IMAGE = 2;	
-	final int PHONE = 3;
-	final int ADDRESS = 4;
-	final int LOCATE = 5;
-	final int MAIN = 6;
-	final int CATEGORY = 7;
-	final int DATE = 8;
+public class MembershipController extends Controller2 implements Initializable{
+	final int name = 0;
+	final int name_id = 1;
+	final int category_id = 2;	
+	final int price = 3;
+	final int businesshour = 4;
+	final int breaktime = 5;
+	final int image = 6;
 	
 	
 	private Parent root;
@@ -42,23 +40,21 @@ public class MembershipController extends Controller implements Initializable{
 	
 	
 	public void MembershipProc() {
-		String []txtFldIdArr = {"#BobNumTxt", "#BobNameTxt", "#BobImageBtn", "#BobPhoneTxt","#BobAddressTxt","#BobLocateTxt","#BobMainTxt","#CategoryTxt","#DateTxt"};
+		String []txtFldIdArr = {"#NameTxt", "#IdTxt", "#CategoryTxt", "#PriceTxt","#HourTxt","#BreakTxt","#ImageTxt"};
 		Map<String, TextField> txtFldMap = 
 				comServ.getTextFieldInfo(root, txtFldIdArr);
 		
 		if(!isCheck(txtFldMap, txtFldIdArr))
 			return;
 		
-		Member member = new Member();
-		member.setBobNum(txtFldMap.get(txtFldIdArr[NUM]).getText());
-		member.setBobName(txtFldMap.get(txtFldIdArr[NAME]).getText());
-		member.setBobImage(txtFldMap.get(txtFldIdArr[IMAGE]).getText());
-		member.setBobPhone(txtFldMap.get(txtFldIdArr[PHONE]).getText());
-		member.setBobAddress(txtFldMap.get(txtFldIdArr[ADDRESS]).getText());
-		member.setBobLocate(txtFldMap.get(txtFldIdArr[LOCATE]).getText());
-		member.setBobMain(txtFldMap.get(txtFldIdArr[MAIN]).getText());
-		member.setCategory(txtFldMap.get(txtFldIdArr[CATEGORY]).getText());
-		member.setDate(txtFldMap.get(txtFldIdArr[DATE]).getText());
+		RestMember member = new RestMember();
+		member.setName(txtFldMap.get(txtFldIdArr[name]).getText());
+		member.setName_id(txtFldMap.get(txtFldIdArr[name_id]).getText());
+		member.setCategory_id(txtFldMap.get(txtFldIdArr[category_id]).getText());
+		member.setPrice(txtFldMap.get(txtFldIdArr[price]).getText());
+		member.setBusinesshour(txtFldMap.get(txtFldIdArr[businesshour]).getText());
+		member.setBreaktime(txtFldMap.get(txtFldIdArr[breaktime]).getText());
+		member.setImage(txtFldMap.get(txtFldIdArr[image]).getText());
 		
 		
 		
@@ -74,10 +70,14 @@ public class MembershipController extends Controller implements Initializable{
 		}
 		return true;
 	}
-	public boolean BobMembershipProc(Member member) {
+	public boolean BobMembershipProc(RestMember member) {
 		IBobMembershipManage membershipManage = new BobMembershipManageImpl();
 		return membershipManage.BobMembershipProc(member);
 	}
+	/*
+	 * public void DelProc(RestMember member) { IBobMembershipManage membershipManage = new
+	 * BobMembershipManageImpl(); return membershipManage.DelProc(RestMember member); }
+	 */
 }
 
 
