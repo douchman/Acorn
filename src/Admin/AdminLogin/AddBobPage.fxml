@@ -54,28 +54,28 @@
                <children>
                   <HBox prefHeight="50.0" prefWidth="600.0">
                      <children>
-                        <PasswordField fx:id="CategoryTxt" promptText="식당 카테고리">
+                        <TextField fx:id="CategoryTxt" promptText="식당 카테고리">
                            <font>
                               <Font size="14.0" />
                            </font>
                            <HBox.margin>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
-                        </PasswordField>
+                        </TextField>
                      </children>
                   </HBox>
                </children>
             </HBox>
             <HBox prefHeight="50.0" prefWidth="600.0">
                <children>
-                  <PasswordField fx:id="PriceTxt" promptText="식당 가격">
+                  <TextField fx:id="PriceTxt" promptText="식당 가격">
                      <font>
                         <Font size="14.0" />
                      </font>
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
-                  </PasswordField>
+                  </TextField>
                </children>
             </HBox>
             <HBox prefHeight="48.0" prefWidth="481.0">
