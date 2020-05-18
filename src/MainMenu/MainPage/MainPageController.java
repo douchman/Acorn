@@ -136,8 +136,11 @@ public class MainPageController extends Controller implements Initializable{
 	}
 	
 	public void login(ActionEvent e) {
-		Stage mstage = new Stage();
-		service.showWindow(mstage, "../../Login/login.fxml", "../../Login/login.css");
+		// 지금 이 부분도 로그인 페이지를 열어준다.
+		//  이제 이부분 처리를 해야함
+		//Stage mstage = new Stage();
+		//service.showWindow(mstage, "../../Login/login.fxml", "../../Login/login.css");
+		loginPage.show();
 		Stage currentStage = (Stage)root.getScene().getWindow();
 		currentStage.close();
 		// 현재 열린 창 닫기 *임시
