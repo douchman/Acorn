@@ -2,6 +2,7 @@ package MainMenu.FirstPage.Service;
 
 import java.io.IOException;
 
+import Admin.AdminLogin.AdminController;
 import MainMenu.FirstPage.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +31,25 @@ public class FirstPageServiceImpl implements FirstPageService {
 		return root;
 	}
 
+	
+	@Override
+	public Parent showWindow2(Stage s, String formPath) {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource(formPath));
+		Parent root = null;
+		try {
+			root = loader.load();
+			s.setScene(new Scene(root));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println(s);
+		AdminController adminCon = loader.getController();
+		adminCon.setRoot(root);
+		s.setResizable(false);
+		s.show();
+		
+		return root;
+	}
 	@Override
 	public Parent showWindow(Stage s, String formPath, String css) {
 		// 메인페이지 불러오는 메서드
