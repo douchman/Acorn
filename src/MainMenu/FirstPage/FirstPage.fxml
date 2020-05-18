@@ -25,7 +25,7 @@
    <center>
       <VBox alignment="CENTER" prefHeight="128.0" prefWidth="600.0" spacing="10.0" BorderPane.alignment="CENTER">
          <children>
-            <Button onAction="#gotoMain" fx:id="GotoMainBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" text="오늘 뭐 먹지? 도토리밥!" />
+            <Button onAction="#openMainPage" fx:id="GotoMainBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" text="오늘 뭐 먹지? 도토리밥!" />
             <Button onAction="#login" fx:id="LoginBtn" mnemonicParsing="false" text="로그인" />
          </children>
          <padding>

@@ -17,6 +17,7 @@ import Minigame.ServiceImpl.MinigameServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -29,6 +30,11 @@ public class MainPageController extends Controller implements Initializable{
 	private MinigameServiceImpl gameservice;
 
 	
+	// 박상현 추가
+		private Stage firstPage;
+		private Stage loginPage;
+		
+		
 	//박상현 수정 
 	private String usrID; 
 	// 로그인 서비스에서 로그인 성공시 저장될 유저 아이디
@@ -41,6 +47,34 @@ public class MainPageController extends Controller implements Initializable{
 	    
 		topservice.setLoginBtn(usrID, root);
 	}
+	
+	// 메인페이지에서 뒤로가기할때 새로운 페이지를 만드는게아니라 최초생성된
+		// 초기 페이지값을 얻어와 설정하는것
+		public void getFirstPage(Stage firstPage) {
+			// 박상현 추가
+			this.firstPage = firstPage;
+		}
+		
+		//
+		public void setLoginPage(Stage loginPage) {
+			this.loginPage = loginPage;
+		}
+		public void setLogoutBtn() {
+			// 박상현 추가
+			Button btnLogout  =(Button)root.lookup("#btnLogout");
+			btnLogout.setVisible(true);
+			
+		}
+		
+		public void Logout(ActionEvent event) {
+			// 박상현 추가
+			Button btnLogout  =(Button)root.lookup("#btnLogout");
+			btnLogout.setVisible(false);
+			setUsrID(null);
+			topservice.LogoutProc("로그인", root);
+		}
+		
+		
 	@Override
 	public void setRoot(Parent root) {
 		this.root = root;
@@ -63,9 +97,14 @@ public class MainPageController extends Controller implements Initializable{
 	
 	//TopPane
 	public void gotoFirstPage(MouseEvent e) {
-		Stage stage = new Stage();
-		service.showWindow(stage, "../FirstPage.fxml", "../FirstPage.css");
-		topservice.WindowClose(e);
+		// 이 메서드가 실행되면
+				// 현재 열려있는 메인창이 닫히고 
+				// 초기 화면이 나타남
+				
+				//Stage stage = new Stage();
+				//service.showWindow(stage, "../FirstPage.fxml", "../FirstPage.css");
+				topservice.WindowClose(e);
+				firstPage.show();
 	}
 	
 	

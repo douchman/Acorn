@@ -95,6 +95,8 @@ public class LoginServiceImpl implements LoginService{
 				commonServ.ErrorMsg("로그인 성공", "어서오세요"+idField.getText()+"님");
 				// 여기서 메인페이지로 넘어가야한다.
 				// 로그인 성공시 리턴으로 해당 아이디 넘김
+				conn.close();
+				psmt.close();
 				return idField.getText();
 			}
 			
@@ -102,8 +104,7 @@ public class LoginServiceImpl implements LoginService{
 				commonServ.ErrorMsg("로그인 실패", "비밀번호가 불일치");
 			}
 			
-			conn.close();
-			psmt.close();
+			
 			
 		} catch (SQLException e) {
 			//System.out.println("일치하는 아이디가 없습니다.");

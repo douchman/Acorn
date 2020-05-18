@@ -12,4 +12,6 @@ public interface TopFieldService {
 	// 로그인 했을때 로그인된 아이디 표시만할 수 있도록 버튼을 바꿔주는 임시 메서드
 	// 추가 수정 해야함 -> 로그아웃 ?
 	public void setLoginBtn(String str, Parent root);
+	//박상현 추가
+		public void LogoutProc(String str, Parent root);
 }

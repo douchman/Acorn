@@ -15,18 +15,34 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginController extends Controller implements Initializable {
 	private Parent root;
 	private FirstPageService service;
 	private LoginService loginServ;
+	
+	// 박상현 추가
+		private Stage mainStage;
+		private MainPageController MainPageCon;
+		
+		
 	@Override
 	public void setRoot(Parent root) {
 		this.root = root;
 		setTextProperty();
 	}
 
+	public void getMainStage(Stage mainStage){
+		this.mainStage = mainStage;
+	}
+	
+	public void getMainCon(MainPageController MainPageCon) {
+		this.MainPageCon = MainPageCon;
+	}
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		service = new FirstPageServiceImpl();
@@ -43,30 +59,34 @@ public class LoginController extends Controller implements Initializable {
 		// 수정
 		String usrID = loginServ.LoginProc(root);
 		if (usrID!=null){
-			Stage mainStage = new Stage();
-			Parent mainPageRoot;
-			Scene sc;
+			//Stage mainStage = new Stage();
+			//Parent mainPageRoot;
+			//Scene sc;
 			//service.showWindow(mainStage, "../../MainPage/MainPage.fxml", "../../MainPage/MainPage.css");
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../MainPage/MainPage.fxml"));
+			//FXMLLoader loader = new FXMLLoader(getClass().getResource("../MainPage/MainPage.fxml"));
 			
-			// 로그인 성공시 메인페이지 오픈
-			try {
-				mainPageRoot = loader.load();
-				MainPageController mainCon = loader.getController();
-				mainCon.setRoot(mainPageRoot);
-				mainCon.setUsrID(usrID);
-				sc = new Scene(mainPageRoot);
-				sc.getStylesheets().add(getClass().getResource("../MainPage/MainPage.css").toString());
-				mainStage.setScene(sc);
-				mainStage.show();
-				
-				// 현재 창 닫기
-				Stage stg = (Stage)root.getScene().getWindow();
-				stg.close();
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			//mainPageRoot = loader.load();
+			//MainPageController mainCon = loader.getController();
+			//mainCon.setRoot(mainPageRoot);
+			//mainCon.setUsrID(usrID);
+			//sc = new Scene(mainPageRoot);
+			//sc.getStylesheets().add(getClass().getResource("../MainPage/MainPage.css").toString());
+			//mainStage.setScene(sc);
+			Stage loginPage = (Stage)root.getScene().getWindow();
+			//System.out.println(MainPageCon);
+			TextField idField = (TextField)root.lookup("#emailTxtF");
+			TextField pwField = (TextField)root.lookup("#pwField");
+			
+			idField.clear();
+			pwField.clear();
+			MainPageCon.setUsrID(usrID);
+			MainPageCon.setLogoutBtn();
+			MainPageCon.setLoginPage(loginPage);
+			mainStage.show();
+			
+			// 현재 창 닫기
+			Stage stg = (Stage)root.getScene().getWindow();
+			stg.close();
 			
 		}
 	}

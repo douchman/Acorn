@@ -43,6 +43,17 @@ public class TopFieldServiceImpl implements TopFieldService {
 	}
 	
 	@Override
+	public void LogoutProc(String str, Parent root) {
+		// 임시메서드 정의
+		Button btnLogin = (Button)root.lookup("#TloginBtn");
+		
+		
+		btnLogin.setText(str);
+		btnLogin.setPrefWidth(200);
+		btnLogin.setDisable(false);
+		
+	}
+	@Override
 	public void wReview(Parent root) {
 		int rid=0;
 		@SuppressWarnings("unchecked")
