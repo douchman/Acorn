@@ -9,8 +9,10 @@ import Reviewpage.Review.WriteReviewController;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+/*
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+*/
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -25,11 +27,13 @@ public class TabServiceImpl implements TabService{
 		dbserv = new MyDBServiceImpl();
 		comserv = new CommonServiceImpl();
 	}
+	/*
 	//이미지뷰어(미사용)
 	private void ReviewImgview(Parent form, String imgURL) {
 		ImageView imgview = (ImageView)form.lookup("#TabReviewImgview");
 		imgview.setImage(new Image(imgURL));
 	}
+	*/
 	//메뉴 탭 보여주기
 	@Override
 	public void TabMenu(Parent form, String shopId) {	
@@ -62,8 +66,8 @@ public class TabServiceImpl implements TabService{
 	}
 	//이메일아이디 일부 숨기기
 	private String hideEmail(String email) {
-		int elen = email.substring(2).length();
-		email = email.substring(0,2);
+		int elen = email.substring(3).length();
+		email = email.substring(0,3);
 		for(int i=0;i<elen;i++)	email += "*";
 		return email;
 	}
