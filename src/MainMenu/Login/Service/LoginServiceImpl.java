@@ -153,7 +153,7 @@ public class LoginServiceImpl implements LoginService{
 				if(rs.getInt("admin_set")==1) {
 				commonServ.ErrorMsg("관리자 로그인", "어서오세요"+idField.getText()+"님");
 				Stage stage = new Stage();
-				fServ.showWindow(stage, "../../../Admin/AdminLogin/AdminPage.fxml");
+				fServ.showWindow2(stage, "../../../Admin/AdminLogin/AdminPage.fxml");
 				
 				Stage stage2 = (Stage) root.getScene().getWindow();
 				stage2.close();

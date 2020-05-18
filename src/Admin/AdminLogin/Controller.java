@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
  
-public class Controller extends Controller2 implements Initializable{
+public class Controller1 extends Controller2 implements Initializable{
 	private Parent root;
  
 	@Override

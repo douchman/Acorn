@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 
-public class AddAdressController extends Controller implements Initializable{
+public class AddAdressController extends Controller2 implements Initializable{
 	final int name_id = 0;
 	final int loca_x = 1;	
 	final int loca_y = 2;

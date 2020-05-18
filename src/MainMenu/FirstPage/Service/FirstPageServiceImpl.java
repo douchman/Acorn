@@ -30,8 +30,6 @@ public class FirstPageServiceImpl implements FirstPageService {
 		
 		return root;
 	}
-
-	
 	@Override
 	public Parent showWindow2(Stage s, String formPath) {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(formPath));
@@ -43,13 +41,14 @@ public class FirstPageServiceImpl implements FirstPageService {
 			e.printStackTrace();
 		}
 		System.out.println(s);
-		AdminController adminCon = loader.getController();
-		adminCon.setRoot(root);
+		AdminController ctrler = loader.getController();
+		ctrler.setRoot(root);
 		s.setResizable(false);
 		s.show();
 		
 		return root;
 	}
+
 	@Override
 	public Parent showWindow(Stage s, String formPath, String css) {
 		// 메인페이지 불러오는 메서드

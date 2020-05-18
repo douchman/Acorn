@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import Admin.AdminLogin.Controller;
+import Admin.AdminLogin.AdminController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -33,7 +33,7 @@ public class CommonServiceImpl implements CommonService{
 			e.printStackTrace();
 		}
 		
-		Controller ctrler = loader.getController();
+		AdminController ctrler = loader.getController();
 		ctrler.setRoot(root);
 	
 		
