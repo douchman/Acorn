@@ -105,6 +105,10 @@ public class ReviewPageController extends Controller implements Initializable{
 	 //탭 페이지 - 리뷰
 	  //리뷰 쓰기
 	public void WriteReviewProc() {
+		if(userID.contentEquals("guest")) {
+			comserv.Msgbox("로그인하고 이용하세요.");
+			return;
+		}
 		tabserv.WriteReviewServ(stage, root, userID, shopID, this);
 	}
 	 //탭 페이지 - 공지

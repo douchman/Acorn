@@ -93,6 +93,13 @@ public class MyDBServiceImpl implements MyDBService {
 				"and shop_id = " + shopId + ";";
 	}
 	@Override
+	public String EmailSQL(String shopId, String userId) {
+		return "select email, substr(email, 1, instr(email,'@')-1)\n" + 
+				"from member as mem, reviewTable as rev\n" + 
+				"where mem.email = rev.user_email\n" + 
+				"and shop_id = " + shopId + " and user_email = '" + userId + "';";
+	}
+	@Override
 	public String AdminSQL(String userId) {
 		return "select admin_set from member where email = '" + userId + "';";
 	}

@@ -122,7 +122,7 @@ public class TabServiceImpl implements TabService{
 		writeCtrl.setReviewCtrler(rvCon);
 		
 		Label lbl = (Label)form.lookup("#WriterNameLbl");
-		String email = dbserv.selectDB(dbserv.EmailSQL(shopId), "substr(email, 1, instr(email,'@')-1)").get(0);
+		String email = dbserv.selectDB(dbserv.EmailSQL(shopId, userId), "substr(email, 1, instr(email,'@')-1)").get(0);
 		lbl.setText(dbserv.selectDB(dbserv.WriteSQL(userId), "name").get(0)+"("+ email +")");
 	}
 	

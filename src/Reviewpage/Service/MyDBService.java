@@ -12,6 +12,7 @@ public interface MyDBService {
 	public String WriteSQL(String userId);
 	public String EditSQL(String reviewId);
 	public String EmailSQL(String shopId);
+	public String EmailSQL(String shopId, String userId);
 	public String AdminSQL(String userId);
 	public void insertBookmark(String shopId, String userId);
 	public void deleteBookmark(String shopId, String userId);
