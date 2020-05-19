@@ -20,4 +20,5 @@ public interface MyDBService {
 	public String FindEditReview(String writeday, String userId);
 	public void EditReview(String reviewId, String text, String imgurl);
 	public void DeleteReview(String reviewId);
+	public String userWriteSQL(String userId);
 }

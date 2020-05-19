@@ -40,6 +40,14 @@ public class MyDBServiceImpl implements MyDBService {
 		return mapstr;
 	}
 
+	
+	@Override
+	   public String userWriteSQL(String userId) {
+	      return "\r\n" + 
+	            "select name from member where email = '" + userId + "';";
+	   }
+	
+	
 	//select를 위한 SQL문
 	@Override
 	public String InformationSQL(String shopId) {

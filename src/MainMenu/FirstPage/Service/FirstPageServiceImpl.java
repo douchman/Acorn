@@ -73,6 +73,9 @@ public class FirstPageServiceImpl implements FirstPageService {
 							getClass().getResource(css).toString());
 			LoginPage.setScene(scene);
 					
+			
+			MainPageCon.setLoginPage(LoginPage);
+			
 			return LoginPage;
 		}
 		

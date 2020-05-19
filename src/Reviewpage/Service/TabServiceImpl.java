@@ -127,7 +127,7 @@ public class TabServiceImpl implements TabService{
 		
 		Label lbl = (Label)form.lookup("#WriterNameLbl");
 		String email = dbserv.selectDB(dbserv.userEmailSQL(userId), "substr(email, 1, instr(email,'@')-1)").get(0);
-		lbl.setText(dbserv.selectDB(dbserv.WriteSQL(userId), "name").get(0)+"("+ email +")");
+		lbl.setText(dbserv.selectDB(dbserv.userWriteSQL(userId), "name").get(0)+"("+ email +")");
 	}
 	
 }

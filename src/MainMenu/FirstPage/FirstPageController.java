@@ -32,10 +32,7 @@ public class FirstPageController extends Controller implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		service = new FirstPageServiceImpl();
-		mainPage = service.getMainPage
-				("../../MainPage/MainPage2.fxml", "../../MainPage/MainPage.css",firstPage);
-		loginStg = service.getLoginPage
-				("../../Login/login.fxml", "../../Login/login.css",mainPage);
+		
 		System.out.println("퍼스트페이지 컨트롤러 메인 페이지  ! : " +  mainPage);
 
 	}
@@ -45,6 +42,13 @@ public class FirstPageController extends Controller implements Initializable {
 			// 메인에서 실행될때 퍼스트페이지 즉
 			// 초기화면의 Stage값을 가져온다.
 			this.firstPage = firstPage;
+			
+			mainPage = service.getMainPage
+					("../../MainPage/MainPage2.fxml", "../../MainPage/MainPage.css",firstPage);
+			loginStg = service.getLoginPage
+					("../../Login/login.fxml", "../../Login/login.css",mainPage);
+			
+			
 		}
 		
 		public void openMainPage() {

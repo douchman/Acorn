@@ -154,9 +154,10 @@ public abstract class Roulette {
 			
 			@Override
 			public void run() {
-				stage.close();
+				
 				try {
 					Thread.sleep(3000);
+					stage.close();
 					mainCon.Tsearch(str);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
