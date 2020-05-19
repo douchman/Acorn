@@ -77,6 +77,7 @@ public class CustomRulette extends Roulette{
 			}
 			setContentsList();
 			super.makeRoulette();
+			super.RotateReady();
 			super.show();
 			menu.close();
 		});
