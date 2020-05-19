@@ -25,6 +25,7 @@ public class FirstPageMain extends Application {
 				getClass().getResource("FirstPage.css").toString());
 				
 		primaryStage.setScene(sc);
+		firstCon.setRoot(root);
 		firstCon.setFirstPage(primaryStage);	
 		primaryStage.show();
 				
