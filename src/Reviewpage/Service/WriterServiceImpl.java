@@ -92,8 +92,8 @@ public class WriterServiceImpl implements WriterService{
 	public void EditBtnServ(Parent form, String reviewId) {
 		String text = getTA(form, "#WriteContentsTA");
 		String imgurl = comserv.getLabel(form, "#WriteReviewImgURLLbl");
-		if(imgurl.equals("사진없음")) 
-			imgurl = null;
+		if(imgurl == null) 
+			imgurl = "사진없음";
 		dbserv.EditReview(reviewId, text, imgurl);
 	}
 }
