@@ -54,6 +54,8 @@ public class FirstPageController extends Controller implements Initializable {
 		public void openMainPage() {
 			// 여기서 메인 페이지를 구성해줄때 반드시
 			// 초기화면의 객체를 넣어주어야한다.
+			Stage firstPage = (Stage)root.getScene().getWindow();
+	         firstPage.close();
 			mainPage.show();
 		}
 		
